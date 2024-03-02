@@ -1,11 +1,10 @@
 .login-page {
-    background-image: url('C:\Users\91974\Desktop\HOMEMUSE\CLIENT\assets\gettyimages-599768748-612x612.jpg');
+    background-image: url('/CLIENT/assets/gettyimages-599768748-612x612.jpg');
     background-size: cover;
 
     
    }
    
-  
    .but
  {
   display: flex;
