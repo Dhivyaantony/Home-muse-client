@@ -1,0 +1,50 @@
+/* TaskCreationForm.css */
+
+.task-creation-container {
+  width: 100%; /* Adjust the width as needed */
+  max-width: 900px; /* Adjust the max-width as needed */
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.task-creation-container h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block; /* Display labels as block elements */
+  margin-bottom: 5px; /* Add some bottom margin for spacing */
+  font-weight: bold; /* Make labels bold for better visibility */
+  color: #333; /* Set label color to ensure visibility */
+}
+
+input[type="text"],
+textarea,
+select {
+  width: calc(100% - 22px); /* Adjusted width to account for padding and border */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}

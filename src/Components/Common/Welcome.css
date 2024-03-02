@@ -1,0 +1,70 @@
+/* Style for the container */
+/* UserView.css */
+
+/* Style for the container */
+.container {
+  padding-top: 60px; /* Adjust as needed to account for the height of the navigation bar */
+  background-image: url('../../images/background.webp'); /* Replace '/path/to/your/background/image.jpg' with the actual path to your image file */
+  background-size: cover; /* Ensure the background image covers the entire container */
+  background-position: center; /* Center the background image */
+  min-height: 100vh; /* Ensure the container fills the entire viewport height */
+  display: flex; /* Use flexbox to center content */
+  flex-direction: column; /* Set flex direction to column */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */ 
+}
+
+
+/* Style for the welcome heading */
+h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-top: 5%;
+  margin-bottom: 30px;
+  display:flex;
+  justify-items: center;
+}
+
+/* Style for the card */
+/* Style for the cards */
+.card {
+  border: 1px ;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  opacity: 0.7; /* Set the opacity level */
+  margin-top: 25%;
+}
+
+/* Style for the card title */
+.card-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Style for the card text */
+.card-text {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Style for the buttons */
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+/* Style for the link buttons */
+.link-btn {
+  text-decoration: none;
+}
+
+.link-btn .btn-primary {
+  width: 100%;
+}

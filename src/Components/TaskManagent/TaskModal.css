@@ -1,0 +1,32 @@
+/* TaskModal.css */
+
+.modal {
+    display: none; /* Hide the modal by default */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    z-index: 1000;
+  }
+  
+  .modal.open {
+    display: block; /* Display the modal when the 'open' class is applied */
+  }
+  
+  .modal-content {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+  
+  /* Add more styles as needed */
+  

@@ -1,0 +1,27 @@
+.login-page {
+    background-image: url('C:\Users\91974\Desktop\HOMEMUSE\CLIENT\assets\gettyimages-599768748-612x612.jpg');
+    background-size: cover;
+
+    
+   }
+   
+  
+   .but
+ {
+  display: flex;
+  gap: 35px;
+  justify-content: center;
+  align-items:center;
+ }
+ .b1,.b2
+ {
+  width: 100px;
+ }
+ .p1>p{
+  color: hsl(218, 81%, 95%);
+  font-family: 'Poppins', sans-serif;
+  margin-top:5px;
+  
+ }
+ 
+   
