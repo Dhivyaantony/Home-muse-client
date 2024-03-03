@@ -38,11 +38,10 @@ function HomePage() {
 
            
 
-            {/* Feature Card: Meal Planner */}
            
           </div>
 
-          {/* Login and Signup Buttons */}
+        
          
          
         </div>

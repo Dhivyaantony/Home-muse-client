@@ -45,13 +45,7 @@
     background-image: url('../../assets/young-asian-girl-holding-coin-260nw-1483127366.webp');
   }
   
-  .feature-card:nth-child(2) {
-    background-image: url('../../assets/recipi.jpg');
-  }
   
-  .feature-card:nth-child(3) {
-    background-image: url('../../assets/meal.jpg');
-  }
   
   .feature-card {
     border: 1px solid #ccc;
