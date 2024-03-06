@@ -5,6 +5,8 @@ import Login from './Pages/Login';
 import HomeOrganizationDashboard from './Pages/DashBoard';
 import HomePage from './Pages/Home';
 import TaskCreationForm from './Components/TaskManagent/TaskCreation';
+import RecipeForm from './Components/RecipiManagement/RecipiForm';
+import RecipeManagement from './Components/RecipiManagement/RecipiManagement';
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
     <Route path="/Home" element={<HomePage/>}/>
         <Route path="/DashBoard" element={<HomeOrganizationDashboard />} />
 <Route path="/create-task"element={<TaskCreationForm/>}/>
+<Route path="/recipiHome"element={<RecipeManagement/>}/>
+<Route path="/add-recipi"element={<RecipeForm/>}/>
       </Routes>
     </Router>
   );

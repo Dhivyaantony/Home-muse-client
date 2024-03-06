@@ -16,17 +16,15 @@ function HomePage() {
 
   // Determine the target route for the "Get Your Task Done" card
   const taskDoneRoute = isAuthenticated ? '/dashboard' : '/login';
-  return (
-    <>      <div className='background' >
+  const recipeManagementRoute = isAuthenticated ? '/recipiHome' : '/login';
 
-      <MainNavBar />
+
+  return (
+    <>
+      <div className="background">
+        <MainNavBar />
         <div className="home-page">
-          <p>"Embark on a journey of productivity, creativity,
-             and culinary delight with our all-in-one app. 
-             From managing your tasks to discovering delicious
-              recipes and planning meals effortlessly, 
-              empower yourself to organize your life and 
-              unlock your full potential."</p>
+          <p>"Embark on a journey of productivity, creativity, and culinary delight with our all-in-one app. From managing your tasks to discovering delicious recipes and planning meals effortlessly, empower yourself to organize your life and unlock your full potential."</p>
           <h1>Discover Amazing Features</h1>
           <div className="feature-cards">
             {/* Feature Card: Get Your Task Done */}
@@ -36,14 +34,28 @@ function HomePage() {
               <Link to={taskDoneRoute}>Explore</Link>
             </div>
 
-           
+            {/* Recipe Management */}
+            <div className="feature-card">
+              <h2>Recipe Management</h2>
+              <p>Organize and save your favorite recipes for quick access.</p>
+              <Link to={recipeManagementRoute}>Explore</Link>
+            </div>
 
-           
+            {/* Meal Planning */}
+            <div className="feature-card">
+              <h2>Meal Planning</h2>
+              <p>Plan meals for the week ahead and streamline your grocery shopping.</p>
+              <Link to="/meal-planning">Explore</Link>
+            </div>
+
+          
+            {/* Community Engagement */}
+            <div className="feature-card">
+              <h2>Community Engagement</h2>
+              <p>Connect with other housewives, share tips, and support each other.</p>
+              <Link to="/community">Explore</Link>
+            </div>
           </div>
-
-        
-         
-         
         </div>
       </div>
     </>

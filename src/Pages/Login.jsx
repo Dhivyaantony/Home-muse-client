@@ -39,7 +39,7 @@ const Login=()=> {
 
     <MDBContainer fluid className='p-4 background-radial-gradient min-vh-100'>
       <MDBRow>
-<div className='s mt-5'></div>
+<div className='s mt-5 '></div>
         <MDBCol md='6' className='p1 text-center d-flex flex-column mt-5 ml- '>
 
           <h1 className="my-5 display-2 fw-bold ls-tight px-3 " style={{color: 'hsl(218, 81%, 95%)'}}>

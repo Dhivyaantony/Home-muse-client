@@ -1,4 +1,4 @@
- import React, { useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { BASE_URL } from '../../Constants/constants'
 //import Home from '../Pages/home';
@@ -122,5 +122,3 @@ return (
    
 
 export default LoginBox;
-
-

@@ -1,95 +1,95 @@
 .sidebar {
-    position: fixed;
-    top: 60px;
-    right: 0; /* Position sidebar on the right side */
-    width: 200px; /* Set sidebar width */
-    height: 100vh; /* Make sidebar full height */
-    background-color: #333; /* Sidebar background color */
-    color: #fff; /* Sidebar text color */
-    padding-top: 60px; /* Add padding for the navbar height */
-    text-align: center; /* Center text horizontally */
-    z-index: 1000; /* Ensure sidebar is above other content */
-  }
-  
-  .sidebar ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .sidebar li {
-    padding: 10px 0;
-  }
-  
-  .sidebar a {
-    color: #fff;
-    text-decoration: none;
-  }
-  
-  .sidebar a:hover {
-    text-decoration: underline;
-  }
-  /* Sidebar.css */
+  position: fixed;
+  top: 60px;
+  right: 0; /* Position sidebar on the right side */
+  width: 200px; /* Set sidebar width */
+  height: 100vh; /* Make sidebar full height */
+  background-color: #333; /* Sidebar background color */
+  color: #fff; /* Sidebar text color */
+  padding-top: 60px; /* Add padding for the navbar height */
+  text-align: center; /* Center text horizontally */
+  z-index: 1000; /* Ensure sidebar is above other content */
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 10px 0;
+}
+
+.sidebar a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  text-decoration: underline;
+}
+/* Sidebar.css */
 
 /* Modal Overlay */
 .modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(242, 241, 241, 0.5); /* Semi-transparent black overlay */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+position: fixed;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: rgba(242, 241, 241, 0.5); /* Semi-transparent black overlay */
+display: flex;
+justify-content: center;
+align-items: center;
 }
 .sidebar {
-  width: 250px;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: -250px;
-  background: #e3e3e158;
-  transition: left 0.3s ease;
+width: 250px;
+height: 100%;
+position: fixed;
+top: 0;
+left: -250px;
+background: #e3e3e158;
+transition: left 0.3s ease;
 }
 
 .sidebar.open {
-  left: 0;
+left: 0;
 }
 
 .sidebar-toggle {
-  cursor: pointer;
-  padding: 15px;
-  position: absolute;
-  top: 15px;
-  left: 230px;
-  z-index: 100;
+cursor: pointer;
+padding: 15px;
+position: absolute;
+top: 15px;
+left: 230px;
+z-index: 100;
 }
 
 .sidebar-toggle span {
-  display: block;
-  width: 25px;
-  height: 3px;
-  background: #333;
-  margin-bottom: 5px;
+display: block;
+width: 25px;
+height: 3px;
+background: #333;
+margin-bottom: 5px;
 }
 .sidebar{
-   
-    margin-top: 50px; /* Adjust the value as needed */
-  
-  }
+ 
+  margin-top: 50px; /* Adjust the value as needed */
+
+}
 
 
 
 .profile-picture {
-  width: 50px; /* Adjust the width of the profile picture as needed */
-  height: 50px; /* Adjust the height of the profile picture as needed */
-  border-radius: 50%; /* Ensure the profile picture is circular */
-  margin-right: 10px; /* Adjust the margin as needed */
+width: 50px; /* Adjust the width of the profile picture as needed */
+height: 50px; /* Adjust the height of the profile picture as needed */
+border-radius: 50%; /* Ensure the profile picture is circular */
+margin-right: 10px; /* Adjust the margin as needed */
 }
 
 .profile-icon {
-  font-size: 30px; /* Adjust the font size of the profile icon as needed */
-  margin-right: 10px; /* Adjust the margin as needed */
+font-size: 30px; /* Adjust the font size of the profile icon as needed */
+margin-right: 10px; /* Adjust the margin as needed */
 }
 
 /* Other styles for the sidebar components */
@@ -97,50 +97,50 @@
 
 /* Modal Content */
 .modal-content {
-  background: #ffffff; /* Solid white background */
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Shadow effect */
-  max-width: 600px; /* Adjust max width as needed */
-  width: 100%;
-  max-height: 80vh; /* Adjust max height as needed */
-  overflow-y: auto; /* Enable vertical scrolling if content exceeds max height */
+background: #ffffff; /* Solid white background */
+border-radius: 8px;
+padding: 20px;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Shadow effect */
+max-width: 600px; /* Adjust max width as needed */
+width: 100%;
+max-height: 80vh; /* Adjust max height as needed */
+overflow-y: auto; /* Enable vertical scrolling if content exceeds max height */
 }
 
 
 
 /* Modal Title */
 .modal-content h2 {
-  font-size: 24px;
-  margin-bottom: 16px;
+font-size: 24px;
+margin-bottom: 16px;
 }
 
 /* Modal List */
 .modal-content ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+list-style: none;
+padding: 0;
+margin: 0;
 }
 
 /* Modal List Item */
 .modal-content li {
-  margin-bottom: 12px;
+margin-bottom: 12px;
 }
 
 /* Close Button */
 .modal-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: transparent;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  color: #888;
-  padding: 0;
+position: absolute;
+top: 10px;
+right: 10px;
+background: transparent;
+border: none;
+font-size: 24px;
+cursor: pointer;
+color: #888;
+padding: 0;
 }
 
 /* Close Button Hover */
 .modal-close:hover {
-  color: #000;
+color: #000;
 }
