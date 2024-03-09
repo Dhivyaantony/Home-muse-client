@@ -1,164 +1,157 @@
 /* Existing styles for the dashboard */
 
 .dashcontainer {
-  
   background-image: url('../../assets/wooden-background_24972-623.avif');
-  background-size: 100% 100%; /* Cover the entire container */
-  background-position: center; /* Center the background image */
-  min-height: 105vh; /* Set minimum height to cover the entire viewport */
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
 }
 
 .container {
-max-width: 800px;
-margin: auto;
-padding: 20px;
-position: relative;
-left: 15px;
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
 }
 
 .header {
-text-align: center;
-margin-bottom: 20px;
-color: antiquewhite;
+  text-align: center;
+  margin-bottom: 20px;
+  color: antiquewhite;
 }
 
-/* Dashboard.css */
-
-/* Style for tasks container */
+/* Updated styles for tasks container */
 .tasks {
-margin-top: 20px; /* Add some top margin to separate tasks from other content */
-margin-left: 250px; /* Adjust the margin to move tasks to the right */
+  margin-top: 20px;
 }
-
 
 .tasks ul {
-list-style-type: none;
-padding: 0;
-display: flex; /* Display tasks inline */
-flex-wrap: wrap; /* Allow tasks to wrap to the next line */
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Align tasks evenly */
 }
 
 .tasks ul li {
-margin-right: 20px; /* Add some space between tasks */
-margin-bottom: 20px; /* Add vertical space between rows */
+  flex-basis: calc(33.33% - 20px); /* Adjust width to fit three tasks per row */
+  margin-bottom: 20px;
+  background-color: #ffffff; /* Add background color for tasks */
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
 }
 
-
+/* Button styles */
 .button-container {
-display: flex;
-justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px; /* Add bottom margin for spacing */
 }
 
 .button-container button {
-padding: 8px 16px;
-background-color: #007bff;
-color: #fff;
-border: none;
-border-radius: 4px;
-cursor: pointer;
-font-size: 14px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 .button-container button:hover {
-background-color: #0056b3;
+  background-color: #0056b3;
 }
 
+/* Modal styles */
 .modal-overlay {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
-position: fixed;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-background-color: #fff;
-padding: 20px;
-border-radius: 8px;
-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .modal-content h2 {
-margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .modal-content label {
-display: block;
-margin-bottom: 5px;
+  display: block;
+  margin-bottom: 5px;
 }
 
 .modal-content textarea,
 .modal-content input,
 .modal-content button {
-margin-bottom: 10px;
-padding: 8px;
-border: 1px solid #ccc;
-border-radius: 4px;
-width: 100%;
-box-sizing: border-box;
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .modal-content button {
-background-color: #007bff;
-color: #fff;
-border: none;
-cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
 }
 
 .modal-content button:hover {
-background-color: #0056b3;
+  background-color: #0056b3;
 }
+
+/* Edit form styles */
 .edit-form {
-margin-top: 20px;
-background-color: #de9ec7; /* Add desired background color */
-padding: 20px; /* Add padding for spacing inside the form */
-border-radius: 5px; /* Add border radius for rounded corners */
+  margin-top: 20px;
+  background-color: #de9ec7;
+  padding: 20px;
+  border-radius: 5px;
 }
+
+/* Task actions styles */
 .task-actions {
-display: flex;
-gap: 10px;
-color: black;
+  display: flex;
+  justify-content: space-between;
 }
+
 .task-actions span {
-cursor: pointer;
-transition: color 0.3s ease; /* Smooth transition for color change */
+  cursor: pointer;
 }
 
-/* Hover effect */
 .task-actions span:hover {
-color: #007bff; /* Change color to blue on hover */
-}
-.edit-button,
-.delete-button,
-.reminder-button {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-padding: 8px 12px;
-font-size: 14px;
-border: none;
-border-radius: 4px;
-cursor: pointer;
-transition: background-color 0.3s ease;
+  color: #007bff;
 }
 
-.edit-button:hover,
-.delete-button:hover,
-.reminder-button:hover {
-background-color: #e0e0e0;
+/* Create task container styles */
+.create-task-container {
+  text-align: center;
+  margin-top: 20px;
 }
 
-.edit-button svg,
-.delete-button svg,
-.reminder-button svg {
-margin-right: 5px;
+.create-task-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
-.create-button {
-font-size: 14px; /* Adjust font size as needed */
-padding: 3px;
+
+.create-task-btn:hover {
+  background-color: #0056b3;
 }

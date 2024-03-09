@@ -1,5 +1,51 @@
-.bg-glass{
-  width: 450px;
-  margin-left:50%;
+/* SignUpBox.css */
 
+/* Adjustments for the signup form */
+.SignUpBox {
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 500px;
 }
+
+/* Inputs and labels */
+.MDBInput {
+  margin-bottom: 20px;
+}
+
+.MDBInput label {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Button styles */
+.MDBBtn {
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.MDBBtn:hover {
+  background-color: #0056b3;
+}
+
+/* Additional container styles */
+.text-center {
+  margin-top: 20px;
+}
+
+/* Hyperlink styles */
+.text-center a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.text-center a:hover {
+  text-decoration: underline;
+}
+@media screen and (max-width: 576px) {
+  .sign-up-container {
+    width: 90%; /* Adjust width for extra small screens */
+    padding: 20px; /* Adjust padding for extra small screens */
+  }}

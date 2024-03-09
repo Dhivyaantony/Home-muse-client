@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react'; // Importing useRef from react
 import { useSelector, useDispatch } from 'react-redux';
 import TaskCreationForm from '../Components/TaskManagent/TaskCreation';
 import { createTask, fetchAllTasks, updateTask, deleteTask } from '../toolkit/taskSlice'; // Import deleteTask here
@@ -20,6 +20,7 @@ import { Link } from 'react-router-dom';
 
 
 function HomeOrganizationDashboard() {
+  const editFormRef = useRef(null); // Defining editFormRef using useRef
 
   const userDetails = useSelector(state => state.user.userDetails);
   const [showTaskCreationForm, setShowTaskCreationForm] = useState(false);
@@ -44,6 +45,22 @@ function HomeOrganizationDashboard() {
   const [showReminderList, setShowReminderList] = useState(false);
   const [showReminderModal, setShowReminderModal] = useState(false);
   const [profilePicture, setProfilePicture] = useState(null);
+
+  
+  const formRef = useRef(null); // Ref for the form element
+  useEffect(() => {
+    const scrollToEditForm = () => {
+      if (showEditForm && editFormRef.current) {
+        window.scrollTo({
+          top: editFormRef.current.offsetTop,
+          behavior: 'smooth',
+        });
+      }
+    };
+  
+    scrollToEditForm(); // Call the function when the component mounts or when showEditForm changes
+  }, [showEditForm]); // Include showEditForm in the dependency array
+  
 
   const handleProfilePictureChange = (file) => {
     // Handle profile picture change logic here
@@ -205,6 +222,7 @@ const isToday = (someDate) => {
 const upcomingTask = tasks.find(
   (task) => isHighPriority(task.priority) && isToday(new Date(task.dueDate))
 );
+
   return (
     <>
     <div className='dashcontainer'>
@@ -257,10 +275,16 @@ const upcomingTask = tasks.find(
     </ul>
     
   ) : (
-    <>
-      <p>Let's begin your journey</p>
-      <TaskCreationForm onCreateTask={handleCreateTask} />
-    </>
+   <>
+  <div className="create-task-container">
+    <h3>No tasks yet. Let's get started!</h3>
+    <Link to="/create-task" className="create-task-link">
+      <span>Create Task</span>
+      <span className="blinking-cursor">_</span>
+    </Link>
+  </div>
+</>
+
     
     )}
     {tasks.length > 0 && <Link to="/create-task">Create Task</Link>}
@@ -301,7 +325,7 @@ const upcomingTask = tasks.find(
        
 
 {showEditForm && selectedTask && (
-        <div className="edit-form">
+        <div ref={editFormRef}  className="edit-form">
           <h2>Edit Task</h2>
           <form onSubmit={handleUpdateTask}>
             <div className="form-group">

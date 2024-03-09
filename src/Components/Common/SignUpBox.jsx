@@ -99,7 +99,7 @@ function SignUpBox({ setBoxName }) {
   };
 
   return (
-    <MDBCol md="4">
+    <MDBCol md="6"> {/* Increase column width */}
       <MDBCard className="my-5 bg-glass mt-0 SignUpBox" style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)' }}>
         <MDBCardBody className="p-5">
           <MDBRow>

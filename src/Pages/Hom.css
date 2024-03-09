@@ -94,4 +94,16 @@
   .auth-buttons button:hover {
     background-color: #218838;
   }
+  @media screen and (max-width: 768px) {
+    .feature-card {
+      flex-basis: calc(50% - 20px); /* Adjust width for smaller screens */
+    }
+  }
+  
+  /* For screens smaller than 576px */
+  @media screen and (max-width: 576px) {
+    .feature-card {
+      flex-basis: calc(100% - 40px); /* Adjust width for smaller screens */
+    }
+  }
   

@@ -47,14 +47,6 @@ function HomePage() {
               <p>Plan meals for the week ahead and streamline your grocery shopping.</p>
               <Link to="/meal-planning">Explore</Link>
             </div>
-
-          
-            {/* Community Engagement */}
-            <div className="feature-card">
-              <h2>Community Engagement</h2>
-              <p>Connect with other housewives, share tips, and support each other.</p>
-              <Link to="/community">Explore</Link>
-            </div>
           </div>
         </div>
       </div>
