@@ -5,12 +5,14 @@
   background-size: cover;
   background-position: center;
   min-height: 100vh;
+  margin-left: 10%;
 }
 
 .container {
   max-width: 800px;
   margin: auto;
   padding: 20px;
+  margin-left: 20px;
 }
 
 .header {
@@ -21,6 +23,7 @@
 
 /* Updated styles for tasks container */
 .tasks {
+  margin-left: 20px;
   margin-top: 20px;
 }
 

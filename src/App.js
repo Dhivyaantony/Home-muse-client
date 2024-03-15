@@ -6,19 +6,25 @@ import HomeOrganizationDashboard from './Pages/DashBoard';
 import HomePage from './Pages/Home';
 import TaskCreationForm from './Components/TaskManagent/TaskCreation';
 import RecipeForm from './Components/RecipiManagement/RecipiForm';
-import RecipeManagement from './Components/RecipiManagement/RecipiManagement';
+import RecipeList from './Components/RecipiManagement/RecipeList';
+import MyRecipes from './Components/RecipiManagement/MyRecipe';
+import RecipeDetailsPage from './Pages/Recipi/RecipeDetails';
 
 function App() {
   return (
     <Router>
+
       <Routes>
         <Route path="/" element={<WelcomePage />} />
         <Route path="/login" element={<Login />} />
-    <Route path="/Home" element={<HomePage/>}/>
+        <Route path="/Home" element={<HomePage />} />
         <Route path="/DashBoard" element={<HomeOrganizationDashboard />} />
-<Route path="/create-task"element={<TaskCreationForm/>}/>
-<Route path="/recipiHome"element={<RecipeManagement/>}/>
-<Route path="/add-recipi"element={<RecipeForm/>}/>
+        <Route path="/create-task" element={<TaskCreationForm />} />
+        <Route path="/recipiHome" element={<RecipeList />} />
+        <Route path="/create-recipe" element={<RecipeForm />} />
+        <Route path="/my-recipes" element={<MyRecipes />} />
+        <Route path="/getRecipeById/:recipeId" element={<RecipeDetailsPage />} />
+
       </Routes>
     </Router>
   );

@@ -1,10 +1,10 @@
 .sidebar {
   position: fixed;
-  top: 60px;
+  top: 50px;
   right: 0; /* Position sidebar on the right side */
   width: 200px; /* Set sidebar width */
   height: 100vh; /* Make sidebar full height */
-  background-color: #333; /* Sidebar background color */
+  background-color: #d11919; /* Sidebar background color */
   color: #fff; /* Sidebar text color */
   padding-top: 60px; /* Add padding for the navbar height */
   text-align: center; /* Center text horizontally */
@@ -37,7 +37,7 @@ top: 0;
 left: 0;
 right: 0;
 bottom: 0;
-background-color: rgba(242, 241, 241, 0.5); /* Semi-transparent black overlay */
+background-color: rgba(9, 8, 8, 0.5); /* Semi-transparent black overlay */
 display: flex;
 justify-content: center;
 align-items: center;
@@ -74,10 +74,18 @@ margin-bottom: 5px;
 }
 .sidebar{
  
-  margin-top: 50px; /* Adjust the value as needed */
+  margin-top: 56px; /* Adjust the value as needed */
 
 }
 
+.reminder-toggle {
+  color: #fff;
+  cursor: pointer;
+}
+
+.reminder-toggle:hover {
+  color: #ddd;
+}
 
 
 .profile-picture {

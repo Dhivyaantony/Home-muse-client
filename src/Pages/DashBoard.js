@@ -5,7 +5,7 @@ import { createTask, fetchAllTasks, updateTask, deleteTask } from '../toolkit/ta
 import './Dash.css';
 import AxiosInstance from '../Constants/constants.js';
 import  MainNavBar from '../Components/Common/NavBar.jsx'
-import Sidebar from '../Components/sidebar/Sidebar.js';
+import Sidebar from '../Components/sidebar/Sidebar';
 //import ModalView from '../Components/Common/Modal.js';
 //import TaskModal from '../Components/reminderModal.js'
 //import ModalView from '../Components/Common/ModalView.js';
@@ -225,15 +225,19 @@ const upcomingTask = tasks.find(
 
   return (
     <>
+          <MainNavBar upcomingTask={upcomingTask} />
+
     <div className='dashcontainer'>
-      <MainNavBar upcomingTask={upcomingTask} />
+
+      <div className="container">
+        <div className="sidebar"></div>
 <Sidebar 
   toggleReminderList={toggleReminderList} 
   toggleStatus={toggleStatus} 
   profilePicture={profilePicture} 
   onProfilePictureChange={handleProfilePictureChange} // Make sure to pass the function here
 />
-
+</div>
     <div className="container">
       <div className="header">
         <h1>Home Organization Dashboard</h1>

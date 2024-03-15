@@ -1,0 +1,111 @@
+/* MyRecipesPage.css */
+
+.my-recipes-page {
+    padding: 20px;
+  }
+  
+  
+  
+  .recipe-card {
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s ease;
+  }
+  
+  .recipe-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .recipe-card img {
+    max-width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .recipe-card h3 {
+    font-size: 20px;
+    color: white;
+    margin-top: 10px;
+  }
+  
+  .recipe-card p {
+    font-size: 16px;
+    color: #ccc;
+    margin-top: 10px;
+  }
+  
+  .recipe-card button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+  }
+  
+  .recipe-card button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Modal Overlay */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .modal-content h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .modal-content form input,
+  .modal-content form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .modal-content form button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+  }
+  
+  .modal-content form button:hover {
+    background-color: #45a049;
+  }
+  
+  .modal-content form button:last-child {
+    margin-left: 10px;
+    background-color: #ccc;
+  }
+  
+  .modal-content form button:last-child:hover {
+    background-color: #999;
+  }
+  

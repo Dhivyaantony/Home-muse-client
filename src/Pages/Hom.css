@@ -44,7 +44,9 @@
   .feature-card:nth-child(1) {
     background-image: url('../../assets/young-asian-girl-holding-coin-260nw-1483127366.webp');
   }
-  
+  .feature-card:nth-child(2){
+    background-image: url('../../assets/biriyani.jpg');
+  }
   
   
   .feature-card {

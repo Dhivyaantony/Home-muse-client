@@ -61,10 +61,15 @@ const Sidebar = ({ toggleReminderList, toggleStatus, profilePicture, onProfilePi
             <Link to='/settings'>Settings</Link>
           </li>
           <li className='list-item'>
-            <button onClick={handleToggleReminderList}>Toggle Reminder List</button>
+          <li className='list-item'>
+  <span className="reminder-toggle" onClick={handleToggleReminderList}>Toggle Reminder List</span>
+</li>
           </li>
           <li className='list-item'>
-            <button onClick={toggleStatus}>Toggle Status</button>
+            <Link to='/my-recipes'>My Recipes</Link> {/* Link to My Recipes */}
+          </li>
+          <li className='list-item'>
+            <Link to='/create-recipe'>Create Recipe</Link> {/* Link to Create Recipe */}
           </li>
         </ul>
       </div>
@@ -75,7 +80,7 @@ const Sidebar = ({ toggleReminderList, toggleStatus, profilePicture, onProfilePi
         onRequestClose={handleToggleReminderList}
         overlayClassName="modal-overlay"
         className="modal-content"
-      >
+     >
         <ReminderList recipientEmail={userDetails.email} /> {/* Pass recipientEmail prop */}
       </Modal>
     </div>
