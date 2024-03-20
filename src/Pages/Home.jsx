@@ -17,7 +17,7 @@ function HomePage() {
   // Determine the target route for the "Get Your Task Done" card
   const taskDoneRoute = isAuthenticated ? '/dashboard' : '/login';
   const recipeManagementRoute = isAuthenticated ? '/recipiHome' : '/login';
-
+const mealplanningRoute=isAuthenticated ? '/Meal' : '/login'
 
   return (
     <>
@@ -45,8 +45,15 @@ function HomePage() {
             <div className="feature-card">
               <h2>Meal Planning</h2>
               <p>Plan meals for the week ahead and streamline your grocery shopping.</p>
-              <Link to="/meal-planning">Explore</Link>
+              <Link to={mealplanningRoute}>Explore</Link>
             </div>
+            <div className="cta">
+            <p>Ready to simplify your home life?</p>
+            <div className="cta-btns">
+              <Link to="/signup" className="signup-btn">Sign Up</Link>
+              <Link to="/login" className="login-btn">Log In</Link>
+            </div>
+          </div>
           </div>
         </div>
       </div>

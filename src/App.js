@@ -9,6 +9,7 @@ import RecipeForm from './Components/RecipiManagement/RecipiForm';
 import RecipeList from './Components/RecipiManagement/RecipeList';
 import MyRecipes from './Components/RecipiManagement/MyRecipe';
 import RecipeDetailsPage from './Pages/Recipi/RecipeDetails';
+import MealPlanner from './Components/MealPlanner/MealPlan';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/create-recipe" element={<RecipeForm />} />
         <Route path="/my-recipes" element={<MyRecipes />} />
         <Route path="/getRecipeById/:recipeId" element={<RecipeDetailsPage />} />
+        <Route path="/Meal" element={<MealPlanner />} />
 
       </Routes>
     </Router>

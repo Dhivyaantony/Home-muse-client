@@ -1,36 +1,31 @@
 .login-page {
   background-image: url('../../assets/home.jpg');
   background-size: cover;
-
-  
- }
- 
- .but
-{
-display: flex;
-gap: 35px;
-justify-content: center;
-align-items:center;
-}
-.b1,.b2
-{
-width: 100px;
-}
-.p1>p{
-color: hsl(218, 81%, 95%);
-font-family: 'Poppins', sans-serif;
-margin-top:5px;
-
 }
 
+.but {
+  display: flex;
+  gap: 35px;
+  justify-content: center;
+  align-items: center;
+}
+
+.b1, .b2 {
+  width: 100px;
+}
+
+.p1 > p {
+  color: hsl(218, 81%, 95%);
+  font-family: 'Poppins', sans-serif;
+  margin-top: 5px;
+}
 
 .login-box-container {
-  margin-top: 50px; /* Adjust the margin-top value as needed */
+  margin-top: 50px;
 }
 
-/* Media query for smaller screens */
 @media (max-width: 768px) {
   .login-box-container {
-    margin-top: 20px; /* Adjust the margin-top value for smaller screens */
+    margin-top: 20px;
   }
 }

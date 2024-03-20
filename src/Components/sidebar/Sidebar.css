@@ -1,15 +1,21 @@
+/* Sidebar Container */
 .sidebar {
-  position: fixed;
-  top: 50px;
-  right: 0; /* Position sidebar on the right side */
-  width: 200px; /* Set sidebar width */
-  height: 100vh; /* Make sidebar full height */
-  background-color: #d11919; /* Sidebar background color */
-  color: #fff; /* Sidebar text color */
-  padding-top: 60px; /* Add padding for the navbar height */
-  text-align: center; /* Center text horizontally */
-  z-index: 1000; /* Ensure sidebar is above other content */
+  width: 280px;
+  height: 100vh;
+  position: sticky; /* Make the sidebar fixed */
+  margin-top: 0;
+  left: 0;
+  background-color: #f8f9fa; /* Light gray background */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: width 0.3s ease;
+  overflow-y: auto; /* Add vertical scrollbar if content exceeds height */
 }
+
+/* Add a z-index to ensure the sidebar stays above other content */
+.sidebar {
+  z-index: 1000;
+}
+
 
 .sidebar ul {
   list-style: none;

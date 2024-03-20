@@ -1,10 +1,9 @@
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { FaTasks, FaBell, FaUser } from 'react-icons/fa'; // Import icons
-import { useState } from 'react';
-import Modal from 'react-modal'; // Import React Modal
-import ReminderList from '../../Pages/Reminder/ReminderList'; // Import ReminderList component
-
+import { FaTasks, FaBell, FaUser } from 'react-icons/fa';
+import Modal from 'react-modal';
+import ReminderList from '../../Pages/Reminder/ReminderList';
 import './Sidebar.css';
 
 const Sidebar = ({ toggleReminderList, toggleStatus, profilePicture, onProfilePictureChange }) => {
@@ -33,55 +32,51 @@ const Sidebar = ({ toggleReminderList, toggleStatus, profilePicture, onProfilePi
         <span></span>
       </div>
       <div className="sidebar-content">
-        <ul>
-          <li className='list-item user-info'>
-            <label htmlFor="profile-picture-input">
-              {profilePicture ? (
-                <img src={profilePicture} alt="Profile" className="profile-picture" />
-              ) : (
-                <FaUser className="profile-icon" />
-              )}
-              <input
-                type="file"
-                id="profile-picture-input"
-                accept="image/*"
-                onChange={handleProfilePictureChange}
-                style={{ display: 'none' }}
-              />
-            </label>
-            <div>
-              <h5>{userDetails.fName}</h5>
-              <h5>{userDetails.email}</h5>
-            </div>
+        <div className="user-info">
+          <label htmlFor="profile-picture-input" className="profile-picture-label">
+            {profilePicture ? (
+              <img src={profilePicture} alt="Profile" className="profile-picture" />
+            ) : (
+              <FaUser className="profile-icon" />
+            )}
+            <input
+              type="file"
+              id="profile-picture-input"
+              accept="image/*"
+              onChange={handleProfilePictureChange}
+              style={{ display: 'none' }}
+            />
+          </label>
+          <div className="user-details">
+            <h5>{userDetails.fName}</h5>
+            <h5>{userDetails.email}</h5>
+          </div>
+        </div>
+        <ul className="sidebar-menu">
+          <li className="menu-item">
+            <Link to='/dashboard'><FaTasks /> Dashboard</Link>
           </li>
-          <li className='list-item'>
-            <Link to='/dashboard'>Dashboard</Link>
+          <li className="menu-item">
+            <Link to='/settings'><FaUser /> Settings</Link>
           </li>
-          <li className='list-item'>
-            <Link to='/settings'>Settings</Link>
+          <li className="menu-item">
+            <span className="reminder-toggle" onClick={handleToggleReminderList}><FaBell /> Toggle Reminder List</span>
           </li>
-          <li className='list-item'>
-          <li className='list-item'>
-  <span className="reminder-toggle" onClick={handleToggleReminderList}>Toggle Reminder List</span>
-</li>
+          <li className="menu-item">
+            <Link to='/my-recipes'><FaTasks /> My Recipes</Link>
           </li>
-          <li className='list-item'>
-            <Link to='/my-recipes'>My Recipes</Link> {/* Link to My Recipes */}
-          </li>
-          <li className='list-item'>
-            <Link to='/create-recipe'>Create Recipe</Link> {/* Link to Create Recipe */}
+          <li className="menu-item">
+            <Link to='/create-recipe'><FaTasks /> Create Recipe</Link>
           </li>
         </ul>
       </div>
-
-      {/* Reminder List Modal */}
       <Modal
         isOpen={showReminderModal}
         onRequestClose={handleToggleReminderList}
         overlayClassName="modal-overlay"
         className="modal-content"
-     >
-        <ReminderList recipientEmail={userDetails.email} /> {/* Pass recipientEmail prop */}
+      >
+        <ReminderList recipientEmail={userDetails.email} />
       </Modal>
     </div>
   );

@@ -1,54 +1,81 @@
-.recipe-details {
-    max-width: 800px;
-    margin: 0 auto;
-    background-color:black;
-    color: beige;
-  }
-  
-  .recipe-title {
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .recipe-image {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 20px;
-  }
-  
-  .recipe-description {
-    font-size: 16px;
-    margin-bottom: 20px;
-  }
-  
-  .section-title {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .ingredients-list,
-  .instructions-list {
-    list-style-type: none;
-    padding-left: 0;
-  }
-  
-  .ingredient-item,
-  .instruction-item {
-    font-size: 16px;
-    margin-bottom: 10px;
-  }
-  
-  .loading,
-  .error {
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 20px;
-  }
-  .recipe-image {
-    max-width: 50%;
-    height: auto;
+/* RecipeDetail.css */
+
+.recipe-details-container {
+  padding: 20px;
+  background-color: #f8f9fa; /* Set background color */
+  border-radius: 10px; /* Add border radius for a modern look */
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
 }
-  
+
+.recipe-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.recipe-title {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #333; /* Set text color */
+}
+
+.recipe-image1 {
+  width: 100%; /* Ensure image covers the entire width */
+  max-height: 300px; /* Limit maximum image height */
+  object-fit: cover; /* Maintain aspect ratio */
+  border-radius: 10px; /* Add border radius for a modern look */
+}
+
+.recipe-content {
+  margin-top: 20px;
+}
+
+.section {
+  margin-bottom: 30px; /* Add space between sections */
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333; /* Set text color */
+  margin-bottom: 10px;
+}
+
+.ingredients-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.ingredient-item {
+  font-size: 18px;
+  color: #555; /* Set text color */
+  margin-bottom: 5px;
+}
+
+.instructions-list {
+  list-style-type: decimal;
+  padding-left: 20px;
+}
+
+.instruction-item {
+  font-size: 18px;
+  color: #555; /* Set text color */
+  margin-bottom: 5px;
+}
+
+.video-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.video-container {
+  margin-top: 20px;
+}
+
+.video-container iframe {
+  width: 100%; /* Ensure video fills its container */
+  max-width: 800px; /* Limit maximum video width */
+  height: 400px; /* Set video height */
+  border-radius: 10px; /* Add border radius for a modern look */
+}

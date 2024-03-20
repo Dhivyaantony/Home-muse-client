@@ -45,40 +45,50 @@ const RecipeDetailsPage = () => {
     const { title, imageUrl, description, ingredients, instructions, videoUrl } = recipe;
 
     return (
-        <div className="recipe-details">
-            <h1 className="recipe-title">{title}</h1>
-            <img className="recipe-image" src={imageUrl} alt={title} />
-            <p className="recipe-description">{description}</p>
-            <h2 className="section-title">Ingredients:</h2>
-            <ul className="ingredients-list">
-                {ingredients.map((ingredient, index) => (
-                    <li key={index} className="ingredient-item">{ingredient}</li>
-                ))}
-            </ul>
-            <h2 className="section-title">Instructions:</h2>
-            <ol className="instructions-list">
-                {Array.isArray(instructions) ? (
-                    instructions.map((instruction, index) => (
-                        <li key={index} className="instruction-item">{instruction}</li>
-                    ))
-                ) : (
-                    <li className="instruction-item">{instructions}</li>
-                )}
-            </ol>
-            {videoUrl && (
-                <div className="video-container">
-                    <h2 className="section-title">Video:</h2>
-                    <iframe
-                        width="560"
-                        height="315"
-                        src={`https://www.youtube.com/embed/${videoUrl}`}
-                        title="YouTube video player"
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                    ></iframe>
+        <div className="recipe-details-container">
+            <div className="recipe-header">
+                <h1 className="recipe-title">{title}</h1>
+                <img className="recipe-image1" src={imageUrl} alt={title} />
+            </div>
+            <div className="recipe-content">
+                <div className="recipe-description">{description}</div>
+                <div className="section">
+                    <h2 className="section-title">Ingredients:</h2>
+                    <ul className="ingredients-list">
+                        {ingredients.map((ingredient, index) => (
+                            <li key={index} className="ingredient-item">{ingredient}</li>
+                        ))}
+                    </ul>
                 </div>
-            )}
+                <div className="section">
+                    <h2 className="section-title">Instructions:</h2>
+                    <ol className="instructions-list">
+                        {Array.isArray(instructions) ? (
+                            instructions.map((instruction, index) => (
+                                <li key={index} className="instruction-item">{instruction}</li>
+                            ))
+                        ) : (
+                            <li className="instruction-item">{instructions}</li>
+                        )}
+                    </ol>
+                </div>
+                {videoUrl && (
+                    <div className="section video-section">
+                        <h2 className="section-title">Video:</h2>
+                        <div className="video-container">
+                            <iframe
+                                width="560"
+                                height="315"
+                                src={`https://www.youtube.com/embed/${videoUrl}`}
+                                title="YouTube video player"
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            ></iframe>
+                        </div>
+                    </div>
+                )}
+            </div>
         </div>
     );
 };
