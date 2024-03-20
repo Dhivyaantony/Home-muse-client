@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { FaTasks, FaBell, FaUser } from 'react-icons/fa';
 import Modal from 'react-modal';
 import ReminderList from '../../Pages/Reminder/ReminderList';
@@ -54,19 +53,19 @@ const Sidebar = ({ toggleReminderList, toggleStatus, profilePicture, onProfilePi
         </div>
         <ul className="sidebar-menu">
           <li className="menu-item">
-            <Link to='/dashboard'><FaTasks /> Dashboard</Link>
+            <span onClick={() => window.location.href = '/dashboard'}><FaTasks /> Dashboard</span>
           </li>
           <li className="menu-item">
-            <Link to='/settings'><FaUser /> Settings</Link>
+            <span onClick={() => window.location.href = '/settings'}><FaUser /> Settings</span>
           </li>
           <li className="menu-item">
             <span className="reminder-toggle" onClick={handleToggleReminderList}><FaBell /> Toggle Reminder List</span>
           </li>
           <li className="menu-item">
-            <Link to='/my-recipes'><FaTasks /> My Recipes</Link>
+            <span onClick={() => window.location.href = '/my-recipes'}><FaTasks /> My Recipes</span>
           </li>
           <li className="menu-item">
-            <Link to='/create-recipe'><FaTasks /> Create Recipe</Link>
+            <span onClick={() => window.location.href = '/create-recipe'}><FaTasks /> Create Recipe</span>
           </li>
         </ul>
       </div>

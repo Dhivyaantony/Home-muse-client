@@ -6,8 +6,8 @@ function ReminderList({ recipientEmail }) {
     const [reminders, setReminders] = useState([]);
     const [editedReminder, setEditedReminder] = useState(null);
     const [editedValues, setEditedValues] = useState({});
-    const [reminderTime, setReminderTime] = useState(new Date()); // State for reminder time
-    const [showEditModal, setShowEditModal] = useState(false); // State for showing edit modal
+    const [reminderTime, setReminderTime] = useState(new Date());
+    const [showEditModal, setShowEditModal] = useState(false);
 
     useEffect(() => {
         fetchReminders();
@@ -15,68 +15,58 @@ function ReminderList({ recipientEmail }) {
 
     async function fetchReminders() {
         try {
-            const response = await AxiosInstance.get(`reminders/getRemindersByRecipientEmail/${recipientEmail}`);
-            const parsedReminders = response.data.reminders.map(reminder => ({
-                ...reminder,
-                time: new Date(Date.parse(reminder.time)).toLocaleString(),
-                dueDate: new Date(reminder.dueDate).toLocaleDateString(),
-                createdAt: new Date(reminder.createdAt).toLocaleString()
-            }));
+            const response = await AxiosInstance.get(`/reminders/getRemindersByRecipientEmail/${recipientEmail}`);
+            const parsedReminders = response.data.reminders.map(parseReminder);
             setReminders(parsedReminders);
         } catch (error) {
             console.error('Error fetching reminders:', error);
         }
     }
 
-    async function handleDeleteReminder(id) {
+    const parseReminder = (reminder) => ({
+        ...reminder,
+        time: new Date(Date.parse(reminder.time)).toLocaleString(),
+        dueDate: new Date(reminder.dueDate).toLocaleDateString(),
+        createdAt: new Date(reminder.createdAt).toLocaleString()
+    });
+
+    const handleDeleteReminder = async (id) => {
         try {
-            await AxiosInstance.delete(`reminders/deleteReminder/${id}`);
+            await AxiosInstance.delete(`/reminders/deleteReminder/${id}`);
             setReminders(prevReminders => prevReminders.filter(reminder => reminder._id !== id));
         } catch (error) {
             console.error('Error deleting reminder:', error);
         }
     }
 
-    async function handleSaveReminder() {
+    const handleSaveReminder = async () => {
         try {
             const updatedReminder = { ...editedValues, time: reminderTime };
-            console.log('Updated Reminder:', updatedReminder); // Log updatedReminder data
-    
-            const url = `reminders/updateReminder/${editedReminder._id}`;
-            console.log('Request URL:', url); // Log request URL
-            console.log('Request Data:', updatedReminder); // Log request data
-            const config = {
+            const url = `/reminders/updateReminder/${editedReminder._id}`;
+            const response = await AxiosInstance.put(url, updatedReminder, {
                 headers: {
-                    'Content-Type': 'application/json', // Example content type header
-                    // Add any other headers as needed
-                }}
-
-                AxiosInstance.put(url, updatedReminder, config)
-                .then(response => {
-                    // Handle successful response
-                    console.log('Response Data:', response.data);
-                    // Perform actions based on the response, such as updating the UI
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-            
-                setReminders(prevReminders =>
-                    prevReminders.map(reminder =>
-                        reminder._id === editedReminder._id ? updatedReminder : reminder
-                    )
-                );
-                
-            // Reset the edited reminder and values
-            setEditedReminder(null);
-            setEditedValues({});
-            setShowEditModal(false); // Close the edit modal after saving
+                    'Content-Type': 'application/json'
+                }
+            });
+            console.log('Response Data:', response.data);
+            setReminders(prevReminders =>
+                prevReminders.map(reminder =>
+                    reminder._id === editedReminder._id ? updatedReminder : reminder
+                )
+            );
+            handleCloseModal();
         } catch (error) {
             console.error('Error updating reminder:', error);
         }
     }
-    
-    function handleChange(event) {
+
+    const handleCloseModal = () => {
+        setEditedReminder(null);
+        setEditedValues({});
+        setShowEditModal(false);
+    }
+
+    const handleChange = (event) => {
         const { name, value } = event.target;
         setEditedValues(prevValues => ({
             ...prevValues,
@@ -84,20 +74,14 @@ function ReminderList({ recipientEmail }) {
         }));
     }
 
-    function handleCancelEdit() {
-        setEditedReminder(null);
-        setEditedValues({});
-        setShowEditModal(false); // Close the edit modal when canceling
-    }
-
-    function handleReminderTimeChange(date) {
+    const handleReminderTimeChange = (date) => {
         setReminderTime(date);
     }
 
-    function handleEditReminder(id) {
+    const handleEditReminder = (id) => {
         const reminderToEdit = reminders.find(reminder => reminder._id === id);
-        setEditedReminder(reminderToEdit); // Set editedReminder
-        setShowEditModal(true); // Open the edit modal
+        setEditedReminder(reminderToEdit);
+        setShowEditModal(true);
     }
 
     return (
@@ -106,38 +90,14 @@ function ReminderList({ recipientEmail }) {
             <ul>
                 {reminders.map((reminder) => (
                     <li key={reminder._id}>
-                        {editedReminder && editedReminder._id === reminder._id ? (
-                            <div>
-                                <input
-                                    type="text"
-                                    name="taskName"
-                                    value={editedValues.taskName || editedReminder.taskName}
-                                    onChange={handleChange}
-                                />
-                                <input
-                                    type="text"
-                                    name="message"
-                                    value={editedValues.message || editedReminder.message}
-                                    onChange={handleChange}
-                                />
-                                <input
-                                    type="datetime-local"
-                                    value={reminderTime.toISOString().slice(0, -8)}
-                                    onChange={(e) => setReminderTime(new Date(e.target.value))}
-                                />
-                                <button onClick={handleSaveReminder}>Save</button>
-                                <button onClick={handleCancelEdit}>Cancel</button>
-                            </div>
-                        ) : (
-                            <div>
-                                <div>Task: {reminder.taskName}</div>
-                                <div>Message: {reminder.message}</div>
-                                <div>Time: {reminder.createdAt}</div>
-                                <div>dueDate: {reminder.dueDate}</div>
-                                <button onClick={() => handleDeleteReminder(reminder._id)}>Delete</button>
-                                <button onClick={() => handleEditReminder(reminder._id)}>Edit</button>
-                            </div>
-                        )}
+                        <div>
+                            <div>Task: {reminder.taskName}</div>
+                            <div>Message: {reminder.message}</div>
+                            <div>Time: {reminder.createdAt}</div>
+                            <div>dueDate: {reminder.dueDate}</div>
+                            <button onClick={() => handleDeleteReminder(reminder._id)}>Delete</button>
+                            <button onClick={() => handleEditReminder(reminder._id)}>Edit</button>
+                        </div>
                     </li>
                 ))}
             </ul>
@@ -159,10 +119,10 @@ function ReminderList({ recipientEmail }) {
                     <input
                         type="datetime-local"
                         value={reminderTime.toISOString().slice(0, -8)}
-                        onChange={(e) => setReminderTime(new Date(e.target.value))}
+                        onChange={(e) => handleReminderTimeChange(new Date(e.target.value))}
                     />
                     <button onClick={handleSaveReminder}>Save</button>
-                    <button onClick={() => setShowEditModal(false)}>Cancel</button>
+                    <button onClick={handleCloseModal}>Cancel</button>
                 </div>
             )}
         </div>

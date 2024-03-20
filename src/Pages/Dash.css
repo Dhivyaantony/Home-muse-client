@@ -1,18 +1,31 @@
 /* Existing styles for the dashboard */
 
+/* Default styles */
+
 .dashcontainer {
   background-image: url('../../assets/wooden-background_24972-623.avif');
   background-size: cover;
   background-position: center;
-  min-height: 100vh;
-  margin-left: 10%;
+  height: 100vh;
+  overflow: hidden; /* Add this line to prevent white space */
+  position: relative;
+  bottom: 0%;
+}
+
+.create-task-container {
+  background-image: url('../../assets/clik2.jpg');
+  height: 150vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 90%; /* Change height to 100% */
+  overflow: hidden; /* Add this line to prevent white space */
 }
 
 .container {
   max-width: 800px;
   margin: auto;
-  padding: 20px;
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 .header {
@@ -21,9 +34,8 @@
   color: antiquewhite;
 }
 
-/* Updated styles for tasks container */
 .tasks {
-  margin-left: 20px;
+  margin-left: 100px;
   margin-top: 20px;
 }
 
@@ -32,23 +44,22 @@
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between; /* Align tasks evenly */
+  justify-content: space-between;
 }
 
 .tasks ul li {
-  flex-basis: calc(33.33% - 20px); /* Adjust width to fit three tasks per row */
+  flex-basis: calc(33.33% - 20px);
   margin-bottom: 20px;
-  background-color: #ffffff; /* Add background color for tasks */
+  background-color: #ffffff;
   padding: 15px;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Button styles */
 .button-container {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px; /* Add bottom margin for spacing */
+  margin-bottom: 20px;
 }
 
 .button-container button {
@@ -65,7 +76,6 @@
   background-color: #0056b3;
 }
 
-/* Modal styles */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -117,15 +127,14 @@
   background-color: #0056b3;
 }
 
-/* Edit form styles */
 .edit-form {
   margin-top: 20px;
-  background-color: #de9ec7;
+  background-color: #299b6a;
   padding: 20px;
   border-radius: 5px;
+  margin-left: 20%;
 }
 
-/* Task actions styles */
 .task-actions {
   display: flex;
   justify-content: space-between;
@@ -139,7 +148,6 @@
   color: #007bff;
 }
 
-/* Create task container styles */
 .create-task-container {
   text-align: center;
   margin-top: 20px;
@@ -157,4 +165,38 @@
 
 .create-task-btn:hover {
   background-color: #0056b3;
+}
+.create-task-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none; /* Remove default link underline */
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+/* Responsive styles */
+
+@media (max-width: 768px) {
+  .dashcontainer {
+    margin-left: 0;
+  }
+
+  .container {
+    padding: 10px;
+    margin-left: 0;
+  }
+
+  .tasks ul li {
+    flex-basis: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 376px) {
+  .tasks ul li {
+    flex-basis: calc(100% - 20px);
+  }
 }

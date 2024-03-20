@@ -230,7 +230,7 @@ const upcomingTask = tasks.find(
     <div className='dashcontainer'>
 
       <div className="container">
-        <div className="sidebar"></div>
+        <div className="sidebar">
 <Sidebar 
   toggleReminderList={toggleReminderList} 
   toggleStatus={toggleStatus} 
@@ -420,6 +420,7 @@ const upcomingTask = tasks.find(
           </form>
         </div>
       )}
+    </div>
     </div>
     </div>
     </>

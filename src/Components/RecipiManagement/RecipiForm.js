@@ -49,7 +49,8 @@ const RecipeForm = ({ onAdd }) => {
   };
 
   return (
-    <div>
+    <div className='main'>
+      
       <div className="form-container">
         <h2>Add Recipe</h2>
         {message && <p>{message}</p>} {/* Display message if available */}

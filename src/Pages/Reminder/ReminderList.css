@@ -1,0 +1,55 @@
+.reminder-list {
+  font-family: Arial, sans-serif;
+}
+
+.reminder-list h2 {
+  margin-bottom: 10px;
+}
+
+.reminder-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.reminder-list li {
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.reminder-list li div {
+  margin-bottom: 5px;
+}
+
+.reminder-list .edit-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reminder-list .edit-modal h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.reminder-list .edit-modal input {
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.reminder-list .edit-modal button {
+  margin-right: 10px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.reminder-list .edit-modal button:last-child {
+  margin-right: 0;
+}

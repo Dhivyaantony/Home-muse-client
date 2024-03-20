@@ -1,6 +1,12 @@
 /* RecipeForm.css */
-
+.main{
+  background-image:url('../../images/background.webp');
+  background-size: cover;
+  max-height:110vh;
+  margin-top: 15px;
+}
 .form-container {
+  margin-top: 20%;
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
