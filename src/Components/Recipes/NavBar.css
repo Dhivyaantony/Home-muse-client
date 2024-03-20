@@ -1,0 +1,24 @@
+.navbar {
+    background-color: #007bff; /* Set background color */
+    color: #fff; /* Set text color */
+    padding: 10px; /* Add padding for better spacing */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar a {
+    color: #fff; /* Set link text color */
+    text-decoration: none; /* Remove default underline */
+    margin-right: 20px; /* Add margin between links */
+  }
+  
+  .logout-text {
+    cursor: pointer; /* Set cursor to pointer for better interaction */
+  }
+  
+  .heart-icon {
+    font-size: 20px; /* Set heart icon size */
+    margin-right: 20px; /* Add margin between heart icon and other elements */
+  }
+  
