@@ -47,7 +47,9 @@
   .feature-card:nth-child(2){
     background-image: url('../../assets/biriyani.jpg');
   }
-  
+  .feature-card:nth-child(3) {
+    background-image: url('../../assets/meal.jpg');
+  }
   
   .feature-card {
     border: 1px solid #ccc;

@@ -50,7 +50,7 @@ const mealplanningRoute=isAuthenticated ? '/Meal' : '/login'
             <div className="cta">
             <p>Ready to simplify your home life?</p>
             <div className="cta-btns">
-              <Link to="/signp" className="signup-btn">Sign Up</Link>
+              <Link to="/signUp" className="signup-btn">Sign Up</Link>
               <Link to="/login" className="login-btn">Log In</Link>
             </div>
           </div>
