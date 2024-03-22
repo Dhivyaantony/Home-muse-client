@@ -6,7 +6,7 @@
   background-image: url('../../assets/wooden-background_24972-623.avif');
   background-size: cover;
   background-position: center;
-  height: 100vh;
+  min-height: 100vh;
   overflow: hidden; /* Add this line to prevent white space */
   position: relative;
   bottom: 0%;

@@ -372,6 +372,7 @@ const upcomingTask = tasks.find(
                 <option value="high">High</option>
               </select>
             </div>
+            
             <label>Status:</label>
 <div>
   <div>

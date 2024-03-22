@@ -1,24 +1,69 @@
 .navbar {
-    background-color: #007bff; /* Set background color */
-    color: #fff; /* Set text color */
-    padding: 10px; /* Add padding for better spacing */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px 20px;
+}
+
+.navbar-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navbar-list li {
+  margin-right: 20px;
+}
+
+.navbar-list li:last-child {
+  margin-right: 0;
+}
+
+.navbar-list li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-container input[type="text"] {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.search-container button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.search-container button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 10px;
   }
-  
-  .navbar a {
-    color: #fff; /* Set link text color */
-    text-decoration: none; /* Remove default underline */
-    margin-right: 20px; /* Add margin between links */
+
+  .navbar-list {
+    margin-top: 10px;
   }
-  
-  .logout-text {
-    cursor: pointer; /* Set cursor to pointer for better interaction */
+
+  .search-container {
+    margin-top: 10px;
   }
-  
-  .heart-icon {
-    font-size: 20px; /* Set heart icon size */
-    margin-right: 20px; /* Add margin between heart icon and other elements */
-  }
-  
+}

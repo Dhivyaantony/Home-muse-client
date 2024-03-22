@@ -6,6 +6,7 @@ import './RecipeList.css'; // Import your CSS file for styling
 import Sidebar from '../sidebar/Sidebar';
 import { Link } from 'react-router-dom'; // Import Link component
 import Navbar from '../Recipes/NavBar'
+
 const RecipeList = () => {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true); // State for loading indicator
@@ -29,9 +30,44 @@ const RecipeList = () => {
       });
   };
 
+  const handleLike = async (recipeId) => {
+    try {
+      await AxiosInstance.put(`/recipes/like/${recipeId}`);
+      // Update the state to reflect the change in likes
+      setRecipes(recipes.map(recipe => {
+        if (recipe._id === recipeId) {
+          return { ...recipe, likes: recipe.likes + 1 };
+        }
+        return recipe;
+      }));
+    } catch (error) {
+      console.error('Error liking recipe:', error);
+    }
+  };
+
+  const handleComment = async (recipeId, comment) => {
+    try {
+      await AxiosInstance.post(`/recipes/comment/${recipeId}`, { comment });
+      // Refresh recipes after adding comment
+      fetchRecipes();
+    } catch (error) {
+      console.error('Error adding comment:', error);
+    }
+  };
+
+  const handleSave = async (recipeId) => {
+    try {
+      await AxiosInstance.put(`/recipes/save/${recipeId}`);
+      // Refresh recipes after saving recipe
+      fetchRecipes();
+    } catch (error) {
+      console.error('Error saving recipe:', error);
+    }
+  };
+
   return (
     <>
-    <Navbar/>
+      <Navbar/>
       <Sidebar />
       <div className="recipe-list-container">
         <h2 className="recipe-list-title">All Recipes</h2>
@@ -42,7 +78,10 @@ const RecipeList = () => {
             {recipes.map(recipe => (
               <div key={recipe._id} className="recipe-card-link">
                 <Link to={`/getRecipeById/${recipe._id}`}>
-                  <RecipeCard recipe={recipe} showButtons={false} />
+                  <RecipeCard
+                    recipe={recipe}
+                    
+                  />
                 </Link>
               </div>
             ))}

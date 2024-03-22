@@ -1,10 +1,15 @@
 import React from 'react';
-import '../Pages/RecipeCard.css'
+import '../Pages/RecipeCard.css';
+import { FaRegHeart, FaRegComment, FaRegBookmark } from 'react-icons/fa'; // Import Font Awesome icons
+
 const RecipeCard = ({ recipe, showButtons, onEdit, onDelete }) => {
-  // Ensure that recipe is not null or undefined before accessing its properties
-  const imageUrl = recipe && recipe.imageUrl ? recipe.imageUrl : '';
-  const recipeName = recipe && recipe.name ? recipe.name : '';
-  const recipeId = recipe && recipe._id ? recipe._id : '';
+  // Check if recipe object exists
+  if (!recipe) {
+    return null; // If recipe is null or undefined, return null to render nothing
+  }
+
+  // Extract properties from the recipe object
+  const { _id, name, imageUrl } = recipe;
 
   return (
     <div className="recipe-card">
@@ -12,15 +17,13 @@ const RecipeCard = ({ recipe, showButtons, onEdit, onDelete }) => {
         {imageUrl && <img src={imageUrl} alt="Recipe" />}
       </div>
       <div className="recipe-details">
-        {/* Render recipe name */}
-        <h3 className="recipe-name">{recipeName}</h3>
-        
-        {/* Conditionally render the edit and delete buttons based on showButtons prop */}
+        <h3 className="recipe-name">{name}</h3>
+
+        {/* Check if showButtons is true and render buttons */}
         {showButtons && (
           <div className="recipe-buttons">
-            {/* Pass the recipe ID to the onEdit and onDelete functions */}
             <button onClick={() => onEdit(recipe)}>Edit</button>
-            <button onClick={() => onDelete(recipeId)}>Delete</button>
+            <button onClick={() => onDelete(_id)}>Delete</button>
           </div>
         )}
       </div>

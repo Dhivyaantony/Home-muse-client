@@ -10,13 +10,13 @@ const sendReminderEmail = async (reminder) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'your_email@gmail.com',
+      user: 'dhivyaantony778@gmail.com',
       pass: 'your_password'
     }
   });
 
   const mailOptions = {
-    from: 'your_email@gmail.com',
+    from: 'dhivyaantony778@gmail.com',
     to: reminder.recipient,
     subject: 'Reminder: Task Due Soon',
     text: `Dear ${reminder.recipient},\n\nYou have a task due soon: ${reminder.message}.\n\nRegards,\nYour App`

@@ -3,7 +3,7 @@
 .recipe-list-container {
   background-image: url('../../../assets/wooden-background_24972-623.avif');
   background-size: cover;
-  height: 100vh;
+ min-height: 100vh;
   padding-left: 260px; /* Adjust the left padding to accommodate the sidebar */
   color: #f8eded;
 }
@@ -21,10 +21,7 @@
 }
 
 .recipe-card-link {
-  background-color: #0c0c0c;
-  border-radius: 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
   transition: transform 0.3s ease;
 }
 

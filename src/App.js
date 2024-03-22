@@ -10,6 +10,7 @@ import RecipeList from './Components/RecipiManagement/RecipeList';
 import MyRecipes from './Components/RecipiManagement/MyRecipe';
 import RecipeDetailsPage from './Pages/Recipi/RecipeDetails';
 import MealPlanner from './Components/MealPlanner/MealPlan';
+import SavedRecipesPage from './Pages/Recipi/SavedRecipes';
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
         <Route path="/my-recipes" element={<MyRecipes />} />
         <Route path="/getRecipeById/:recipeId" element={<RecipeDetailsPage />} />
         <Route path="/Meal" element={<MealPlanner />} />
+        <Route path="/saved-recipes" element={<SavedRecipesPage />} />
+        <Route path="/recipes/:id" element={<RecipeDetailsPage/>} />
+
 
       </Routes>
     </Router>

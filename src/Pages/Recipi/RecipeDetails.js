@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import AxiosInstance from '../../Constants/constants';
+import { FaHeart, FaRegHeart, FaComment, FaBookmark, FaRegBookmark } from 'react-icons/fa';
+import { FaSave, FaRegSave } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
+import Navbar from '../../Components/Recipes/NavBar';
 import './RecipeDetail.css';
 
 const RecipeDetailsPage = () => {
@@ -8,7 +12,13 @@ const RecipeDetailsPage = () => {
     const [recipe, setRecipe] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
+    const [comments, setComments] = useState([]);
+    const [newComment, setNewComment] = useState('');
+    const [isLiked, setIsLiked] = useState(false);
+    const [isSaved, setIsSaved] = useState(false);
+    const [showCommentForm, setShowCommentForm] = useState(false); // State variable to toggle comment form
+    const user = useSelector(state => state.user.userDetails);
+const userId=user.userId;
     useEffect(() => {
         const fetchRecipeDetails = async () => {
             try {
@@ -30,6 +40,35 @@ const RecipeDetailsPage = () => {
         }
     }, [recipeId]);
 
+    const handleComment = () => {
+        if (newComment.trim() !== '') {
+            const comment = { id: Date.now(), text: newComment };
+            setComments([...comments, comment]);
+            setNewComment('');
+        }
+    };
+
+    const toggleLike = () => {
+        setIsLiked(!isLiked);
+    };
+   
+    const toggleSave = async () => {
+        try {
+            console.log(userId,recipeId)
+          // Send a POST request to save the recipe
+         const response= await AxiosInstance.post('/recipes/saveRecipe', { userId, recipeId });
+         console.log(response)
+          setIsSaved(true); // Update the state to indicate that the recipe is saved
+        } catch (error) {
+          console.error('Error saving recipe:', error);
+          // Handle error
+        }
+      };
+
+    const toggleCommentForm = () => {
+        setShowCommentForm(!showCommentForm);
+    };
+
     if (loading) {
         return <div className="loading">Loading...</div>;
     }
@@ -45,6 +84,9 @@ const RecipeDetailsPage = () => {
     const { title, imageUrl, description, ingredients, instructions, videoUrl } = recipe;
 
     return (
+        <>
+        <Navbar/>
+        <div className='containe'>
         <div className="recipe-details-container">
             <div className="recipe-header">
                 <h1 className="recipe-title">{title}</h1>
@@ -88,8 +130,46 @@ const RecipeDetailsPage = () => {
                         </div>
                     </div>
                 )}
-            </div>
+                <div className="comments-section">
+                    <h2 className="section-title">Comments:</h2>
+                    <ul className="comments-list">
+                        {comments.map(comment => (
+                            <li key={comment.id} className="comment-item">
+                                <div className="comment-content">{comment.text}</div>
+                            </li>
+                        ))}
+                    </ul>
+                    <div className="recipe-details-container">
+            {/* Your recipe details content */}
         </div>
+                    {showCommentForm && (
+                        <div className="comment-form">
+                            <textarea
+                                value={newComment}
+                                onChange={(e) => setNewComment(e.target.value)}
+                                placeholder="Add a comment..."
+                                rows={4}
+                            ></textarea>
+                            <button onClick={handleComment}>Add Comment</button>
+                        </div>
+                    )}
+                </div>
+            </div>
+            <div className="action-buttons">
+                {isLiked ? (
+                    <FaHeart className="like-icon liked" onClick={toggleLike} />
+                ) : (
+                    <FaRegHeart className="like-icon" onClick={toggleLike} />
+                )}
+                <FaComment className="comment-icon" onClick={toggleCommentForm} />
+                {isSaved ? (
+                <FaSave className="save-icon saved" onClick={toggleSave} />
+            ) : (
+                <FaRegSave className="save-icon" onClick={toggleSave} />
+            )}
+            </div>
+        </div></div>
+        </>
     );
 };
 

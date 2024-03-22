@@ -68,6 +68,11 @@ const Sidebar = ({ toggleReminderList, toggleStatus, profilePicture, onProfilePi
           <li className="menu-item">
             <Link to='/create-recipe'><FaTasks /> Create Recipe</Link>
           </li>
+          <li className="menu-item">
+
+          <Link to="/saved-recipes"><FaTasks />Saved Recipes</Link>
+          </li>
+
         </ul>
       </div>
       <Modal

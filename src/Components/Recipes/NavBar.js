@@ -1,26 +1,35 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { FaHeart } from "react-icons/fa"; // Import heart icon from react-icons library
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Autocomplete from '../Common/AutoComplete'; // Import the Autocomplete component
 import './NavBar.css';
 
 const Navbar = () => {
-  const navigate = useNavigate();
+    // Function to handle selection of autocomplete suggestion
+    const handleSelect = (selectedSuggestion) => {
+        // Do something with the selected suggestion, such as navigating to the recipe page
+        console.log('Selected Recipe:', selectedSuggestion);
+    };
 
-  const logout = () => {
-    // Perform logout logic here
-    // For example, clear authentication token or reset user session
-    // After logout, navigate to the home page or login page
-    navigate('/'); // Navigate to the home page
-  };
-
-  return (
-    <div className="navbar">
-      <Link to="/">Home</Link>
-      <Link to="/saved-recipes">Saved Recipes</Link>
-      <span className="logout-text" onClick={logout}>Logout</span> {/* Use span for logout text */}
-      <FaHeart className="heart-icon" /> {/* Use heart icon for likes */}
-    </div>
-  );
+    return (
+        <nav className='navbar'>
+            <ul className="navbar-list">
+                <li>
+                    <Link to="/">Home</Link>
+                </li>
+                <li>
+                    <Link to="/recipes">Recipes</Link>
+                </li>
+                <li>
+                    <Link to="/about">About</Link>
+                </li>
+                {/* Add more links as needed */}
+            </ul>
+            <div className="search-container">
+                {/* Integrate Autocomplete component into the search input field */}
+                <Autocomplete onSelect={handleSelect} />
+            </div>
+        </nav>
+    );
 };
 
 export default Navbar;
