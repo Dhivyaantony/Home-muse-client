@@ -10,16 +10,13 @@
   overflow: hidden; /* Add this line to prevent white space */
   position: relative;
   bottom: 0%;
-  
 }
 
 .create-task-container {
-  
-  height: 150vh;
+  height: 100vh; /* Change height to 100vh */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 90%; /* Change height to 100% */
   overflow: hidden; /* Add this line to prevent white space */
   color: #ccc;
 }
@@ -37,7 +34,7 @@
 }
 
 .tasks {
-  margin-left: 250px;
+  margin-left: 200px; /* Adjust margin for better alignment */
   margin-top: 20px;
 }
 
@@ -172,13 +169,8 @@
 /* Responsive styles */
 
 @media (max-width: 768px) {
-  .dashcontainer {
-    margin-left: 0;
-  }
-
   .container {
-    padding: 10px;
-    margin-left: 0;
+    max-width: 600px; /* Adjust max-width for better fit */
   }
 
   .tasks ul li {
@@ -187,6 +179,10 @@
 }
 
 @media (max-width: 576px) {
+  .container {
+    max-width: 400px; /* Adjust max-width for better fit */
+  }
+
   .tasks ul li {
     flex-basis: calc(100% - 20px);
   }
