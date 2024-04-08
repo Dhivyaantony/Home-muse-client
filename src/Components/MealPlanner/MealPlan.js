@@ -5,15 +5,15 @@ import AxiosInstance from '../../Constants/constants';
 const MealPlanner = () => {
   const [selectedDay, setSelectedDay] = useState('Monday');
   const [mealPlan, setMealPlan] = useState({
-    Monday: { Breakfast: '', lunch: '', Dinner: '', Snack: '' },
-    Tuesday: { Breakfast: '', lunch: '', Dinner: '', Snack: '' },
-    Wednesday: { Breakfast: '', lunch: '', Dinner: '', Snack: '' },
-    Thursday: { Breakfast: '', lunch: '', Dinner: '', Snack: '' },
-    Friday: { Breakfast: '', lunch: '', Dinner: '', Snack: '' },
+    Monday: { Breakfast: '', Lunch: '', Dinner: '', Snack: '' },
+    Tuesday: { Breakfast: '', Lunch: '', Dinner: '', Snack: '' },
+    Wednesday: { Breakfast: '', Lunch: '', Dinner: '', Snack: '' },
+    Thursday: { Breakfast: '', Lunch: '', Dinner: '', Snack: '' },
+    Friday: { Breakfast: '', Lunch: '', Dinner: '', Snack: '' },
   });
   const [recipesByCategory, setRecipesByCategory] = useState({
     Breakfast: [],
-    lunch: [],
+    Lunch: [],
     Dinner: [],
     Snack: []
   });
@@ -80,11 +80,11 @@ const MealPlanner = () => {
 
   const clearMealPlan = () => {
     setMealPlan({
-      Monday: { Breakfast: '', lunch: '', Dinner: '', Snack: '' },
-      Tuesday: { Breakfast: '', lunch: '', Dinner: '', Snack: '' },
-      Wednesday: { Breakfast: '', lunch: '', Dinner: '', Snack: '' },
-      Thursday: { Breakfast: '', lunch: '', Dinner: '', Snack: '' },
-      Friday: { Breakfast: '', lunch: '', Dinner: '', Snack: '' },
+      Monday: { Breakfast: '', Lunch: '', Dinner: '', Snack: '' },
+      Tuesday: { Breakfast: '', Lunch: '', Dinner: '', Snack: '' },
+      Wednesday: { Breakfast: '', Lunch: '', Dinner: '', Snack: '' },
+      Thursday: { Breakfast: '', Lunch: '', Dinner: '', Snack: '' },
+      Friday: { Breakfast: '', Lunch: '', Dinner: '', Snack: '' },
     });
     setSelectedRecipeIngredients([]); // Clear selected recipe ingredients
   };

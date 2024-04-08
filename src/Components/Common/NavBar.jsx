@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Navbar, Nav, NavDropdown, Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaUser, FaBell } from 'react-icons/fa'; // Import user and bell icons
+import './Nav.css'; // Import CSS file for additional styling
 
 function MainNavBar({ upcomingTask, notificationCount }) {
   const handleLogout = () => {
@@ -19,7 +20,7 @@ function MainNavBar({ upcomingTask, notificationCount }) {
   };
 
   return (
-    <Navbar bg="primary" variant="dark" expand="lg">
+    <Navbar bg="primary" variant="dark" expand="lg" className="sticky-navbar">
       <Navbar.Brand as={Link} to="/">Your Logo</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">

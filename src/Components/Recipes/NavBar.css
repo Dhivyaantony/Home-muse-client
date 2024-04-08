@@ -1,20 +1,25 @@
 .navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Adjust z-index as needed */
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 1rem;
   background-color: #333;
-  padding: 10px 20px;
 }
 
+/* Rest of the CSS remains the same */
+
 .navbar-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  list-style-type: none;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .navbar-list li {
-  margin-right: 20px;
+  margin-right: 1rem;
 }
 
 .navbar-list li:last-child {
@@ -22,48 +27,38 @@
 }
 
 .navbar-list li a {
-  text-decoration: none;
   color: #fff;
-  font-size: 16px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar-list li a:hover {
+  color: #ffd700; /* Change color on hover */
 }
 
 .search-container {
-  display: flex;
-  align-items: center;
-}
-
-.search-container input[type="text"] {
-  padding: 8px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-}
-
-.search-container button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  padding: 8px 16px;
-  margin-left: 10px;
-  cursor: pointer;
-}
-
-.search-container button:hover {
-  background-color: #0056b3;
+  flex-grow: 1;
+  margin-left: 1rem;
 }
 
 /* Responsive Styles */
 @media screen and (max-width: 768px) {
   .navbar {
-    flex-direction: column;
-    padding: 10px;
+      flex-direction: column;
+      align-items: flex-start;
   }
 
   .navbar-list {
-    margin-top: 10px;
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .navbar-list li {
+      margin-right: 0;
+      margin-bottom: 0.5rem;
   }
 
   .search-container {
-    margin-top: 10px;
+      margin: 1rem 0;
   }
 }
