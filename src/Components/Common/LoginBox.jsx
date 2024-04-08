@@ -88,7 +88,7 @@ import './LoBox.css';
 
 return (
   <div className="container">
-    <div className='container col-3 login-box '>
+    <div className='container col-4 login-box '>
       <form>
       
         <div className='input'>

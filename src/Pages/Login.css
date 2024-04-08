@@ -1,17 +1,26 @@
+/* Keep your existing CSS */
 .login-page {
   background-image: url('../../assets/home.jpg');
   background-size: cover;
 }
 
 .but {
-  display: flex;
-  gap: 35px;
-  justify-content: center;
-  align-items: center;
+  margin-top: 30px;
+  text-align: center; /* Center the buttons */
 }
 
 .b1, .b2 {
-  width: 100px;
+  width: 120px; /* Increase button width for better visibility */
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.b1:hover, .b2:hover {
+  background-color: #0056b3;
 }
 
 .p1 > p {
@@ -21,11 +30,14 @@
 }
 
 .login-box-container {
-  margin-top: 50px;
+  position: absolute;
+  top: 20px; /* Adjust top spacing */
+  right: 20px; /* Adjust right spacing */
 }
 
 @media (max-width: 768px) {
   .login-box-container {
     margin-top: 20px;
+    position: static; /* Reset position for smaller screens */
   }
 }

@@ -4,27 +4,9 @@ import axios from 'axios';
 import { BASE_URL } from '../../Constants/constants';
 import { createBrowserHistory } from 'history';
 
-import {
-  MDBBtn,
-  MDBContainer,
-  MDBRow,
-  MDBCol,
-  MDBCard,
-  MDBCardBody,
-  MDBInput,
-  MDBCheckbox,
-  MDBIcon
-} from 'mdb-react-ui-kit';
-
 const history = createBrowserHistory();
 
 function SignUpBox({ setBoxName }) {
-  const history = createBrowserHistory();
-
-  const handleLogin = () => {
-    setBoxName('login');
-  };
-
   const [signUpData, setSignUpData] = useState({
     fName: '',
     lName: '',
@@ -81,7 +63,8 @@ function SignUpBox({ setBoxName }) {
     try {
       const res = await axios.post(`${BASE_URL}/auth/signUp`, signUpData);
       console.log(res);
-      history.push(setBoxName);
+      // Assuming you are using React Router for navigation
+      setBoxName('login'); // Switch to the login view after successful signup
     } catch (error) {
       if (error.response && error.response.status === 409) {
         alert('User with this email already exists!');
@@ -99,85 +82,63 @@ function SignUpBox({ setBoxName }) {
   };
 
   return (
-    <MDBCol md="6"> {/* Increase column width */}
-      <MDBCard className="my-5 bg-glass mt-0 SignUpBox" style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)' }}>
-        <MDBCardBody className="p-5">
-          <MDBRow>
-            <MDBCol col="4">
-              <MDBInput
-                wrapperClass="mb-4"
-                label="First name"
-                id="form1"
-                type="text"
-                value={signUpData.fName}
-                onChange={(e) =>
-                  setSignUpData({ ...signUpData, fName: e.target.value })
-                }
-              />
-            </MDBCol>
-
-            <MDBCol col="4">
-              <MDBInput
-                wrapperClass="mb-4"
-                label="Last name"
-                id="form2"
-                type="text"
-                value={signUpData.lName}
-                onChange={(e) =>
-                  setSignUpData({ ...signUpData, lName: e.target.value })
-                }
-              />
-            </MDBCol>
-          </MDBRow>
-
-          <MDBInput
-            wrapperClass="mb-4"
-            label="Email"
-            id="form3"
-            type="email"
-            value={signUpData.email}
-            onChange={(e) =>
-              setSignUpData({ ...signUpData, email: e.target.value })
-            }
-          />
-          <MDBInput
-            wrapperClass="mb-4"
-            label="Password"
-            id="form4"
+    <div className="sign-up-container">
+      <div className="sign-up-card">
+        <h2 className="text-center mb-4">Sign Up</h2>
+       
+<div className="form-group input-group">
+  <input
+    className="form-control"
+    placeholder="First name"
+    type="text"
+    value={signUpData.fName}
+    onChange={(e) => setSignUpData({ ...signUpData, fName: e.target.value })}
+  />
+  <input
+    className="form-control"
+    placeholder="Last name"
+    type="text"
+    value={signUpData.lName}
+    onChange={(e) => setSignUpData({ ...signUpData, lName: e.target.value })}
+  />
+</div>
+<div className="form-group">
+      <input
+        className="form-control"
+        placeholder="Email"
+        type="email"
+        value={signUpData.email}
+        onChange={(e) => setSignUpData({ ...signUpData, email: e.target.value })}
+      />
+    </div>
+        <div className="form-group">
+          <input
+            className="form-control"
+            placeholder="Password"
             type="password"
             value={signUpData.password}
-            onChange={(e) =>
-              setSignUpData({ ...signUpData, password: e.target.value })
-            }
+            onChange={(e) => setSignUpData({ ...signUpData, password: e.target.value })}
           />
-          <MDBInput
-            wrapperClass="mb-4"
-            label="Confirm Password"
-            id="form5"
-            value={signUpData.confirmPassword}
+        </div>
+        
+        <div className="form-group">
+          <input
+            className="form-control"
+            placeholder="Confirm Password"
             type="password"
-            onChange={(e) =>
-              setSignUpData({
-                ...signUpData,
-                confirmPassword: e.target.value,
-              })
-            }
+            value={signUpData.confirmPassword}
+            onChange={(e) => setSignUpData({ ...signUpData, confirmPassword: e.target.value })}
           />
-
-          <MDBBtn className="w-100 mb-4" size="md" onClick={handleRegister}>
-            Sign Up
-          </MDBBtn>
-
-          <div className="text-center">
-            <p>
-              <span onClick={handleLogin}>Go to login</span>
-            </p>
-
-            <p>Or sign up with:</p>
-          </div>
-        </MDBCardBody>
-      </MDBCard>
-    </MDBCol>
+        </div>
+        <button className="btn btn-primary btn-block" onClick={handleRegister}>Sign Up</button>
+        <div className="text-center mt-3">
+          <p>
+            <span onClick={() => setBoxName('login')} className="link">Go to login</span>
+          </p>
+          <p>Or sign up with:</p>
+        </div>
+      </div>
+    </div>
   );
 }
 

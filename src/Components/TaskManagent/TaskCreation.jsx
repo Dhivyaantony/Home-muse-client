@@ -102,8 +102,9 @@ function TaskCreationForm() {
 
   return (
     <>
+    <MainNavBar/>
+
     <div className='background'>
-<MainNavBar/>
     <div className="task-creation-container">
       <h2>Create New Task</h2>
       <form onSubmit={handleSubmit}>

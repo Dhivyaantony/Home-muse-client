@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export const BASE_URL='https://home-muse-be-2.onrender.com';
-//export const BASE_URL='http://localhost:5000';
+//export const BASE_URL='https://home-muse-be-2.onrender.com';
+export const BASE_URL='http://localhost:5000';
 
 const AxiosInstance = axios.create({
     baseURL: BASE_URL

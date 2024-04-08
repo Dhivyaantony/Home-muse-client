@@ -1,7 +1,7 @@
 
 .background{
   background-image: url('../../assets/wooden-background_24972-623.avif');
-  background-size: 100% 100%; /* Cover the entire container */
+  background-size: 100%; /* Cover the entire container */
   background-position: center; /* Center the background image */
   min-height: 105vh; /* Set minimum height to cover the entire viewport */
 }

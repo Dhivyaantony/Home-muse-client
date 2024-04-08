@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { FaTasks, FaBell, FaUser } from 'react-icons/fa';
+import { FaTasks, FaBell, FaUser, FaMoon, FaSun } from 'react-icons/fa';
 import Modal from 'react-modal';
 import ReminderList from '../../Pages/Reminder/ReminderList';
 import './Sidebar.css';
@@ -9,6 +9,8 @@ import './Sidebar.css';
 const Sidebar = ({ toggleReminderList, toggleStatus, profilePicture, onProfilePictureChange }) => {
   const [showReminderModal, setShowReminderModal] = useState(false);
   const userDetails = useSelector(state => state.user.userDetails);
+  const [isMouseOverSidebar, setIsMouseOverSidebar] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const handleToggleReminderList = () => {
@@ -20,17 +22,32 @@ const Sidebar = ({ toggleReminderList, toggleStatus, profilePicture, onProfilePi
     onProfilePictureChange(file);
   };
 
+  const handleMouseEnter = () => {
+    setIsMouseOverSidebar(true);
+    setIsSidebarOpen(true);
+  };
+
   const handleMouseLeave = () => {
-    setIsSidebarOpen(false);
+    setIsMouseOverSidebar(false);
+    if (!darkMode && !isMouseOverSidebar) { // Hide the sidebar only if dark mode is off and mouse is not over the sidebar
+      setIsSidebarOpen(false);
+    }
+  };
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+    if (!darkMode && !isMouseOverSidebar) { // Hide the sidebar if dark mode is toggled off and mouse is not over the sidebar
+      setIsSidebarOpen(false);
+    }
   };
 
   return (
-    <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`} onMouseLeave={handleMouseLeave}>
-      <div className="sidebar-toggle" onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+    <div 
+      className={`sidebar ${isSidebarOpen ? 'open' : ''} ${darkMode ? 'dark' : ''}`} 
+      onMouseEnter={handleMouseEnter} 
+      onMouseLeave={handleMouseLeave}
+    >
+      {/* Sidebar Content */}
       <div className="sidebar-content">
         <div className="user-info">
           <label htmlFor="profile-picture-input" className="profile-picture-label">
@@ -69,12 +86,15 @@ const Sidebar = ({ toggleReminderList, toggleStatus, profilePicture, onProfilePi
             <Link to='/create-recipe'><FaTasks /> Create Recipe</Link>
           </li>
           <li className="menu-item">
-
-          <Link to="/saved-recipes"><FaTasks />Saved Recipes</Link>
+            <Link to="/saved-recipes"><FaTasks /> Saved Recipes</Link>
           </li>
-
+          <li className="menu-item" onClick={toggleDarkMode}>
+            {darkMode ? <FaSun /> : <FaMoon />}
+            {darkMode ? 'Light Mode' : 'Dark Mode'}
+          </li>
         </ul>
       </div>
+      {/* Modal for Reminder List */}
       <Modal
         isOpen={showReminderModal}
         onRequestClose={handleToggleReminderList}

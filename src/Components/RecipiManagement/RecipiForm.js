@@ -10,6 +10,7 @@ const RecipeForm = ({ onAdd }) => {
   const [instructions, setInstructions] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [cookingTime, setCookingTime] = useState('');
+  const [category, setCategory] = useState(''); // State for category
   const [message, setMessage] = useState('');
   const dispatch = useDispatch();
   const userDetails = useSelector(state => state.user.userDetails);
@@ -24,25 +25,24 @@ const RecipeForm = ({ onAdd }) => {
         instructions,
         imageUrl,
         cookingTime: parseInt(cookingTime),
-        userOwner: userDetails.userId ,// Include userId in the formData
-        videoUrl,// Include video URL in the recipe data
-
+        userOwner: userDetails.userId,
+        videoUrl,
+        category // Include category in the formData
       };
 
       const response = await AxiosInstance.post('recipes/addRecipe', formData);
 
-      // Update message state to indicate that the recipe has been added
       setMessage('Recipe added successfully!');
 
-      // Reset form fields
       setName('');
       setIngredients('');
       setInstructions('');
       setImageUrl('');
       setCookingTime('');
-      
-      // Call the onAdd function passed from the parent component
-      onAdd(response.data); // Pass the newly added recipe data to the parent component
+      setCategory('');
+      setVideoUrl('');
+
+      onAdd(response.data);
     } catch (error) {
       console.error('Error adding recipe:', error);
     }
@@ -50,19 +50,26 @@ const RecipeForm = ({ onAdd }) => {
 
   return (
     <div className='main'>
-      
       <div className="form-container">
         <h2>Add Recipe</h2>
-        {message && <p>{message}</p>} {/* Display message if available */}
+        {message && <p>{message}</p>}
         <form onSubmit={handleSubmit}>
           <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
           <input type="text" placeholder="Ingredients (comma-separated)" value={ingredients} onChange={(e) => setIngredients(e.target.value)} required />
           <textarea placeholder="Instructions" value={instructions} onChange={(e) => setInstructions(e.target.value)} required />
           <input type="text" placeholder="Image URL" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} required />
           <input type="number" placeholder="Cooking Time (minutes)" value={cookingTime} onChange={(e) => setCookingTime(e.target.value)} required />
+          <label htmlFor="category">Category:</label>
+          <select id="category" value={category} onChange={(e) => setCategory(e.target.value)} required>
+            <option value="">Select Category</option>
+            <option value="Breakfast">Breakfast</option>
+            <option value="Lunch">Lunch</option>
+            <option value="Dinner">Dinner</option>
+            <option value="Snack">snack</option>
+            {/* Add more options as needed */}
+          </select>
           <label htmlFor="videoUrl">YouTube Video URL:</label>
-      <input type="text" id="videoUrl" value={videoUrl} onChange={(e) => setVideoUrl(e.target.value)} />
-         
+          <input type="text" id="videoUrl" value={videoUrl} onChange={(e) => setVideoUrl(e.target.value)} />
           <button type="submit">Add Recipe</button>
         </form>
       </div>

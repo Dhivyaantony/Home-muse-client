@@ -1,30 +1,75 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './MealPlan.css';
 import AxiosInstance from '../../Constants/constants';
 
 const MealPlanner = () => {
   const [selectedDay, setSelectedDay] = useState('Monday');
   const [mealPlan, setMealPlan] = useState({
-    Monday: { breakfast: '', lunch: '', dinner: '', snack: '' },
-    Tuesday: { breakfast: '', lunch: '', dinner: '', snack: '' },
-    Wednesday: { breakfast: '', lunch: '', dinner: '', snack: '' },
-    Thursday: { breakfast: '', lunch: '', dinner: '', snack: '' },
-    Friday: { breakfast: '', lunch: '', dinner: '', snack: '' },
+    Monday: { Breakfast: '', lunch: '', Dinner: '', Snack: '' },
+    Tuesday: { Breakfast: '', lunch: '', Dinner: '', Snack: '' },
+    Wednesday: { Breakfast: '', lunch: '', Dinner: '', Snack: '' },
+    Thursday: { Breakfast: '', lunch: '', Dinner: '', Snack: '' },
+    Friday: { Breakfast: '', lunch: '', Dinner: '', Snack: '' },
   });
+  const [recipesByCategory, setRecipesByCategory] = useState({
+    Breakfast: [],
+    lunch: [],
+    Dinner: [],
+    Snack: []
+  });
+  const [selectedRecipeIngredients, setSelectedRecipeIngredients] = useState([]); // State to store selected recipe ingredients
+  const [errorMessage, setErrorMessage] = useState('');
+  const [disableSave, setDisableSave] = useState(true);
+  const [userId, setUserId] = useState(''); // State to store the user ID
 
-  const handleMealSelection = (day, mealType, value) => {
+  useEffect(() => {
+    const fetchRecipesByCategory = async () => {
+      try {
+        const response = await AxiosInstance.get('recipes/getRecipesByCategory');
+        console.log('Response data:', response.data); // Log the response data
+        setRecipesByCategory(response.data.recipes); // Assuming response.data contains recipes
+      } catch (error) {
+        console.error('Error fetching recipes:', error);
+        setErrorMessage('Failed to fetch recipes. Please try again later.');
+      }
+    };
+  
+    fetchRecipesByCategory();
+  }, []);
+
+  useEffect(() => {
+    const isMealPlanValid = Object.values(mealPlan[selectedDay]).every(recipeId => recipeId !== '');
+    setDisableSave(!isMealPlanValid);
+  }, [mealPlan, selectedDay]);
+
+  const handleMealSelection = async (day, mealType, recipeID) => {
+    try {
+      // Fetch ingredients of the selected recipe
+      const response = await AxiosInstance.get(`/recipes/getRecipeIngredients/${recipeID}`);
+      setSelectedRecipeIngredients(response.data.ingredients);
+    } catch (error) {
+      console.error('Error fetching recipe ingredients:', error);
+      setErrorMessage('Failed to fetch recipe ingredients. Please try again later.');
+    }
+
     setMealPlan(prevMealPlan => ({
       ...prevMealPlan,
       [day]: {
         ...prevMealPlan[day],
-        [mealType]: value
+        [mealType]: recipeID
       }
     }));
   };
 
   const createMealPlan = async () => {
     try {
-      const response = await AxiosInstance.post('/create-meal-plan', mealPlan);
+      const mealPlanData = Object.entries(mealPlan[selectedDay]).map(([mealType, recipeID]) => ({
+        userID: userId, // Include the user ID in each meal plan object
+        date: selectedDay,
+        mealType,
+        recipeID
+      }));
+      const response = await AxiosInstance.post('/meal/createMealPlan', mealPlanData);
       console.log('Meal plan created:', response.data);
       // Handle success or navigate to another page
     } catch (error) {
@@ -35,12 +80,13 @@ const MealPlanner = () => {
 
   const clearMealPlan = () => {
     setMealPlan({
-      Monday: { breakfast: '', lunch: '', dinner: '', snack: '' },
-      Tuesday: { breakfast: '', lunch: '', dinner: '', snack: '' },
-      Wednesday: { breakfast: '', lunch: '', dinner: '', snack: '' },
-      Thursday: { breakfast: '', lunch: '', dinner: '', snack: '' },
-      Friday: { breakfast: '', lunch: '', dinner: '', snack: '' },
+      Monday: { Breakfast: '', lunch: '', Dinner: '', Snack: '' },
+      Tuesday: { Breakfast: '', lunch: '', Dinner: '', Snack: '' },
+      Wednesday: { Breakfast: '', lunch: '', Dinner: '', Snack: '' },
+      Thursday: { Breakfast: '', lunch: '', Dinner: '', Snack: '' },
+      Friday: { Breakfast: '', lunch: '', Dinner: '', Snack: '' },
     });
+    setSelectedRecipeIngredients([]); // Clear selected recipe ingredients
   };
 
   return (
@@ -58,18 +104,31 @@ const MealPlanner = () => {
         {Object.keys(mealPlan[selectedDay]).map(mealType => (
           <div className="meal-type" key={mealType}>
             <label>{mealType.charAt(0).toUpperCase() + mealType.slice(1)}:</label>
-            <input
-              type="text"
+            <select
               value={mealPlan[selectedDay][mealType]}
               onChange={(e) => handleMealSelection(selectedDay, mealType, e.target.value)}
-            />
+            >
+              <option value="">Select Recipe</option>
+              {recipesByCategory[mealType] && recipesByCategory[mealType].map(recipe => (
+                <option key={recipe._id} value={recipe._id}>{recipe.name}</option>
+              ))}
+            </select>
           </div>
         ))}
       </div>
+      <div className="selected-recipe-ingredients">
+        <h3>Selected Recipe Ingredients:</h3>
+        <ul>
+          {selectedRecipeIngredients.map(ingredient => (
+            <li key={ingredient._id}>{ingredient.name}</li>
+          ))}
+        </ul>
+      </div>
       <div className="buttons">
-        <button onClick={createMealPlan}>Save</button>
+        <button onClick={createMealPlan} disabled={disableSave}>Save</button>
         <button onClick={clearMealPlan}>Clear</button>
       </div>
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
     </div>
   );
 };

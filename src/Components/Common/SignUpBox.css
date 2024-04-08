@@ -1,51 +1,75 @@
 /* SignUpBox.css */
 
-/* Adjustments for the signup form */
-.SignUpBox {
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 500px;
+/* Sign-up container */
+.sign-up-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 100PX;
+  right: 50PX;
 }
 
-/* Inputs and labels */
-.MDBInput {
+/* Sign-up card */
+.sign-up-card {
+  max-width: 400px;
+  width: 100%;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Title */
+.sign-up-card h2 {
+  text-align: center;
   margin-bottom: 20px;
 }
 
-.MDBInput label {
-  font-size: 0.9rem;
-  color: #555;
+/* Form group */
+.form-group {
+  margin-bottom: 15px;
 }
 
-/* Button styles */
-.MDBBtn {
+/* Form input */
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* Button */
+.btn-primary {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
   background-color: #007bff;
   color: #fff;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+  cursor: pointer;
 }
 
-.MDBBtn:hover {
-  background-color: #0056b3;
-}
-
-/* Additional container styles */
-.text-center {
-  margin-top: 20px;
-}
-
-/* Hyperlink styles */
-.text-center a {
+/* Link */
+.link {
   color: #007bff;
-  text-decoration: none;
+  cursor: pointer;
 }
 
-.text-center a:hover {
-  text-decoration: underline;
+/* Flexbox for first name and last name inputs */
+.input-group {
+  display: flex;
+  gap: 10PX;
 }
-@media screen and (max-width: 576px) {
-  .sign-up-container {
-    width: 90%; /* Adjust width for extra small screens */
-    padding: 20px; /* Adjust padding for extra small screens */
-  }}
+
+.input-group .form-group {
+  flex: 1;
+  margin: 10px; /* Adjust spacing between input fields */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sign-up-card {
+    max-width: 90%;
+  }
+}

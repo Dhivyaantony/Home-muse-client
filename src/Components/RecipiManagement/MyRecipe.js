@@ -1,11 +1,11 @@
-// MyRecipesPage.js
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import AxiosInstance from '../../Constants/constants';
 import ModalView from '../Common/Modal';
-import '../Common/Modal.css'
-import './MyRecipe.css'
+import '../Common/Modal.css';
+import './MyRecipe.css';
+
 const MyRecipesPage = () => {
   const user = useSelector(state => state.user.userDetails);
   const [userRecipes, setUserRecipes] = useState([]);
@@ -16,7 +16,8 @@ const MyRecipesPage = () => {
     ingredients: '',
     instructions: '',
     imageUrl: '',
-    cookingTime: ''
+    cookingTime: '',
+    category: '' // New category field
   });
 
   useEffect(() => {
@@ -45,9 +46,8 @@ const MyRecipesPage = () => {
     } catch (error) {
       console.error('Error deleting recipe:', error);
     }
-};
+  };
 
- 
   const handleEdit = (recipe) => {
     setSelectedRecipe(recipe);
     console.log('Editing Recipe:', recipe);
@@ -56,12 +56,12 @@ const MyRecipesPage = () => {
       ingredients: Array.isArray(recipe.ingredients) ? recipe.ingredients.join(', ') : '',
       instructions: recipe.instructions,
       imageUrl: recipe.imageUrl,
-      cookingTime: recipe.cookingTime != null ? recipe.cookingTime.toString() : '' // Ensure cookingTime is defined before converting to string
+      cookingTime: recipe.cookingTime != null ? recipe.cookingTime.toString() : '',
+      category: recipe.category // Set category field
     });
     setEditModalOpen(true);
   };
-  
-  
+
   const handleCloseEditModal = () => {
     setEditModalOpen(false);
     setSelectedRecipe(null);
@@ -76,8 +76,6 @@ const MyRecipesPage = () => {
       }));
     }
   };
-  
-  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -102,15 +100,12 @@ const MyRecipesPage = () => {
       <h2>My Recipes</h2>
       <div className="recipe-list">
         {userRecipes.map(recipe => (
-         <div key={recipe._id} className="recipe-card">
-         <h3 style={{ color: 'white' }}>{recipe.name}</h3>
-         
+          <div key={recipe._id} className="recipe-card">
+            <h3 style={{ color: 'white' }}>{recipe.name}</h3>
             <img src={recipe.imageUrl} alt={recipe.name} />
             <button onClick={() => handleDelete(recipe._id)}>Delete</button>
             <button onClick={() => handleEdit(recipe)}>Edit</button>
-            
           </div>
-          
         ))}
       </div>
       {selectedRecipe && (
@@ -123,6 +118,14 @@ const MyRecipesPage = () => {
               <textarea name="instructions" value={editedRecipe.instructions} onChange={handleChange}></textarea>
               <input type="text" name="imageUrl" value={editedRecipe.imageUrl} onChange={handleChange} />
               <input type="text" name="cookingTime" value={editedRecipe.cookingTime} onChange={handleChange} />
+              {/* Add select dropdown for the category */}
+              <select name="category" value={editedRecipe.category} onChange={handleChange}>
+                <option value="">Select Category</option>
+                <option value="Breakfast">Breakfast</option>
+                <option value="Lunch">Lunch</option>
+                <option value="Dinner">Dinner</option>
+                {/* Add more options as needed */}
+              </select>
               <button type="submit">Save Changes</button>
               <button type="button" onClick={handleCloseEditModal}>Cancel</button>
             </form>
@@ -134,9 +137,3 @@ const MyRecipesPage = () => {
 };
 
 export default MyRecipesPage;
-
-
-
-
-
-
