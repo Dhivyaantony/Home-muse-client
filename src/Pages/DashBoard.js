@@ -230,15 +230,13 @@ const upcomingTask = tasks.find(
     <div className='dashcontainer'>
 
       <div className="containers">
-        <div className="sidebar">
 <Sidebar 
   toggleReminderList={toggleReminderList} 
   toggleStatus={toggleStatus} 
   profilePicture={profilePicture} 
   onProfilePictureChange={handleProfilePictureChange} // Make sure to pass the function here
 />
-</div>
-    <div className="containers">
+   <div className="containers">
       <div className="header">
         <h1>Home Organization Dashboard</h1>
         <p>Welcome, {userDetails.fName}!</p>
