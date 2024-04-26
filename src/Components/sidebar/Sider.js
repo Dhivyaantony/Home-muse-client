@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { FaTasks, FaBell, FaUser, FaMoon, FaSun } from 'react-icons/fa';
 import Modal from 'react-modal';
 import ReminderList from '../../Pages/Reminder/ReminderList';
-import './Sidebar.css';
+import './Sider.css';
 
 const Sidebar = ({ toggleReminderList, toggleStatus, profilePicture, onProfilePictureChange }) => {
   const [showReminderModal, setShowReminderModal] = useState(false);

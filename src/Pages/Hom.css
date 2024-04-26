@@ -10,8 +10,10 @@
   
  
 .home-page {
+  position: relative;
+  top: 56px;
     max-width: 800px;
-    margin: 0 auto;
+    margin:  auto;
     padding: 20px;
     text-align: center;
     color: white;

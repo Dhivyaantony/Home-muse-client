@@ -1,48 +1,43 @@
 import React, { useState } from 'react';
 import { Navbar, Nav, NavDropdown, Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { FaUser, FaBell } from 'react-icons/fa'; // Import user and bell icons
-import './Nav.css'; // Import CSS file for additional styling
+import { FaUser, FaBell } from 'react-icons/fa';
 
 function MainNavBar({ upcomingTask, notificationCount }) {
-  const handleLogout = () => {
-    // Clear authentication-related data from local storage
-    localStorage.removeItem('token');
-    localStorage.removeItem('userId');
-    // Redirect to the login page or perform any other action
-    window.location.href = '/login'; // Redirect to the login page
-  };
-
   const [showTaskDropdown, setShowTaskDropdown] = useState(false);
 
-  const handleTaskDropdownToggle = () => {
-    setShowTaskDropdown(!showTaskDropdown);
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userId');
+    window.location.href = '/login';
+  };
+
+  const toggleTaskDropdown = () => {
+    setShowTaskDropdown((prev) => !prev);
   };
 
   return (
-    <Navbar bg="primary" variant="dark" expand="lg" className="sticky-navbar">
+    <Navbar bg="primary" variant="dark" expand="lg" fixed="top"> {/* Fixed to the top */}
       <Navbar.Brand as={Link} to="/">Your Logo</Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
-          <Nav.Link as={Link} to="/Home">Home</Nav.Link>
+      <Navbar.Toggle aria-controls="navbar-collapse" />
+      <Navbar.Collapse id="navbar-collapse">
+        <Nav className="me-auto"> {/* Main navigation items */}
+          <Nav.Link as={Link} to="/home">Home</Nav.Link>
           <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
         </Nav>
-        <Nav>
-          <NavDropdown title={<FaBell />}>
-            <NavDropdown.Item onClick={handleTaskDropdownToggle}>
+        <Nav className="justify-content-start"> {/* Adjusted Nav for left alignment */}
+          <NavDropdown title={<FaBell />} id="task-dropdown"> {/* Notification dropdown */}
+            <NavDropdown.Item onClick={toggleTaskDropdown}>
               {upcomingTask ? upcomingTask.name : "No upcoming task"}
             </NavDropdown.Item>
           </NavDropdown>
-          <NavDropdown title={<FaUser />} id="basic-nav-dropdown">
+          {notificationCount > 0 && ( /* Notification badge */
+            <Badge variant="danger">{notificationCount}</Badge>
+          )}
+          <NavDropdown title={<FaUser />} id="user-dropdown"> {/* User/Logout dropdown */}
             <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
           </NavDropdown>
         </Nav>
-        {notificationCount > 0 && (
-          <div className="notification-badge">
-            <Badge variant="danger">{notificationCount}</Badge>
-          </div>
-        )}
       </Navbar.Collapse>
     </Navbar>
   );

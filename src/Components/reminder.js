@@ -11,7 +11,7 @@ const sendReminderEmail = async (reminder) => {
     service: 'gmail',
     auth: {
       user: 'dhivyaantony778@gmail.com',
-      pass: 'your_password'
+      pass: 'rdbb msbu jbsd rxso'
     }
   });
 

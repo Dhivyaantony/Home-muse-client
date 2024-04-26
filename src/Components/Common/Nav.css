@@ -1,15 +1,41 @@
-.sticky-navbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000; /* Ensure Navbar stays above other elements */
+/* Navbar Brand */
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
 }
 
+/* Navbar links */
+.navbar-nav .nav-link {
+  margin-right: 10px; /* Adjust spacing between nav links */
+}
+
+/* Bell and User icons */
+.navbar-nav .nav-link svg {
+  font-size: 1.2rem;
+}
+
+/* Notification badge */
 .notification-badge {
-  margin-left: 10px;
+  margin-left: 10px; /* Adjust spacing between bell icon and badge */
 }
 
-@media (max-width: 768px) {
-  .sticky-navbar .navbar-collapse {
-    justify-content: flex-end;
-  }
+/* Ensure that badge is vertically centered */
+.notification-badge .badge {
+  position: relative;
+  top: -6px;
+}
+
+/* Navbar background color */
+.navbar {
+  background-color: #343a40; /* Dark background color */
+}
+
+/* Navbar text color */
+.navbar-dark .navbar-nav .nav-link {
+  color: #ffffff; /* White text color */
+}
+
+/* Hover effect on navbar links */
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: #17a2b8; /* Light blue color */
 }

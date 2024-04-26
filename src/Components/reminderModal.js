@@ -1,49 +1,75 @@
-// TaskModal.js
 import React, { useState, useEffect } from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import './reminder.css';
 
-function TaskModal({ task, closeModal }) {
+function TaskModal({ reminder, closeModal }) {
   const [message, setMessage] = useState('');
   const [reminderTime, setReminderTime] = useState(new Date());
 
   useEffect(() => {
-    console.log('Selected Task (TaskModal):', task);
-    // Update component state when the task prop changes
-    if (task) {
-      // Example initialization based on the task data
-      setMessage(task.defaultMessage || '');
-      setReminderTime(task.defaultReminderTime || new Date());
+    console.log('Selected Reminder (TaskModal):', reminder);
+    // Update component state when the reminder prop changes
+    if (reminder) {
+      // Initialize fields based on the reminder data
+      setMessage(reminder.message || '');
+      setReminderTime(reminder.dueDate || new Date());
     }
-  }, [task]);
+  }, [reminder]);
 
   const handleReminderTimeChange = (date) => {
     setReminderTime(date);
   };
 
   const handleSaveReminder = () => {
-    // Logic to save the reminder with message and reminderTime
-    console.log('Task:', task);
+    // Logic to update the reminder with new message and reminderTime
+    console.log('Reminder:', reminder);
     console.log('Message:', message);
     console.log('Reminder Time:', reminderTime);
-  
-    // Close the modal after saving the reminder
-    closeModal();
+
+    // Call the backend API to update the reminder with the new data
+    // Make sure to include all necessary fields in the request body
+    const updatedReminderData = {
+      task: reminder.task,
+      recipient: reminder.recipient,
+      taskName: reminder.taskName,
+      message: message,
+      time: reminderTime, // Assuming this is the correct field for reminder time
+      dueDate: reminderTime // Use reminderTime as dueDate
+    };
+
+    // Example fetch request to update the reminder
+    fetch(`/reminders/updateReminder/${reminder._id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedReminderData),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Reminder updated successfully:', data);
+      // Close the modal after successfully updating the reminder
+      closeModal();
+    })
+    .catch(error => {
+      console.error('Error updating reminder:', error);
+      // Handle error if necessary
+    });
   };
 
   return (
     <div className="modal">
       <div className="modal-content">
-        {task ? (
+        {reminder ? (
           <>
             <span className="close" onClick={closeModal}>&times;</span>
-            <h2>Set Reminder for Task: {task.name}</h2>
-            <p>Task ID: {task.id}</p>
-            {/* Render other task details here */}
+            <h2>Update Reminder for Task: {reminder.taskName}</h2>
+            <p>Task ID: {reminder.task}</p>
+            {/* Render other reminder details here */}
           </>
         ) : (
-          <p>No task selected.</p>
+          <p>No reminder selected.</p>
         )}
         {/* Your reminder form elements */}
         <label htmlFor="message">Message:</label>

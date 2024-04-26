@@ -4,7 +4,7 @@ import AxiosInstance from '../../Constants/constants';
 import { FaHeart, FaRegHeart, FaComment, FaBookmark, FaRegBookmark } from 'react-icons/fa';
 import { FaSave, FaRegSave } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
-import Navbar from '../../Components/Recipes/NavBar';
+import Navbar from '../../Components/RecipiManagement/Nav';
 import './RecipeDetail.css';
 
 const RecipeDetailsPage = () => {

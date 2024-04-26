@@ -3,9 +3,9 @@ import axios from 'axios';
 import RecipeCard from '../../Pages/RecipeCard';
 import AxiosInstance from '../../Constants/constants';
 import './RecipeList.css'; // Import your CSS file for styling
-import Sidebar from '../sidebar/Sidebar';
+import Sidebar from '../sidebar/Sider';
 import { Link } from 'react-router-dom'; // Import Link component
-import Navbar from '../Recipes/NavBar'
+import Navbar from './Nav'
 
 const RecipeList = () => {
   const [recipes, setRecipes] = useState([]);

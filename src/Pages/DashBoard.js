@@ -5,7 +5,7 @@ import { createTask, fetchAllTasks, updateTask, deleteTask } from '../toolkit/ta
 import './Dash.css';
 import AxiosInstance from '../Constants/constants.js';
 import  MainNavBar from '../Components/Common/NavBar.jsx'
-import Sidebar from '../Components/sidebar/Sidebar';
+import Sidebar from '../Components/sidebar/Sider.js'
 //import ModalView from '../Components/Common/Modal.js';
 //import TaskModal from '../Components/reminderModal.js'
 //import ModalView from '../Components/Common/ModalView.js';
@@ -45,6 +45,7 @@ function HomeOrganizationDashboard() {
   const [showReminderList, setShowReminderList] = useState(false);
   const [showReminderModal, setShowReminderModal] = useState(false);
   const [profilePicture, setProfilePicture] = useState(null);
+  const [dueDate, setDueDate] = useState(new Date()); // State for due date
 
   
   const formRef = useRef(null); // Ref for the form element
@@ -222,6 +223,9 @@ const isToday = (someDate) => {
 const upcomingTask = tasks.find(
   (task) => isHighPriority(task.priority) && isToday(new Date(task.dueDate))
 );
+const handleDueDateChange = (date) => {
+  setDueDate(date);
+};
 
   return (
     <>
@@ -230,13 +234,15 @@ const upcomingTask = tasks.find(
     <div className='dashcontainer'>
 
       <div className="containers">
+        <div className="sidebar">
 <Sidebar 
   toggleReminderList={toggleReminderList} 
   toggleStatus={toggleStatus} 
   profilePicture={profilePicture} 
   onProfilePictureChange={handleProfilePictureChange} // Make sure to pass the function here
 />
-   <div className="containers">
+</div>
+    <div className="containers">
       <div className="header">
         <h1>Home Organization Dashboard</h1>
         <p>Welcome, {userDetails.fName}!</p>
@@ -296,34 +302,46 @@ const upcomingTask = tasks.find(
 <NotificationIcon /> {/* Place the NotificationIcon component here */}
 
 <Modal
-          isOpen={isModalOpen}
-          onRequestClose={closeModal}
-          
-          overlayClassName="modal-overlay"
-        >
-          <div className="modal-content">
-            <h2>Set Reminder for Task: {selectedTask && selectedTask.name}</h2>
-            <p>Due Date: {selectedTask && selectedTask.dueDate}</p> {/* Render due date here */}
+  isOpen={isModalOpen}
+  onRequestClose={closeModal}
+  overlayClassName="modal-overlay"
+>
+  <div className="modal-content">
+    {selectedTask ? ( // Check if a task is selected
+      <>
+        <h2>Set Reminder for Task: {selectedTask.name}</h2>
+        <p>Due Date: {selectedTask.dueDate}</p> {/* Render due date here */}
+      </>
+    ) : (
+      <h2>Create New Reminder</h2>
+    )}
 
-            <label htmlFor="reminder-message">Message:</label>
-            <textarea
-              id="reminder-message"
-              value={reminderMessage}
-              onChange={(e) => setReminderMessage(e.target.value)}
-            ></textarea>
-            <label htmlFor="reminder-time">Reminder Time:</label>
-            <DatePicker
-              selected={reminderTime}
-              onChange={handleReminderTimeChange}
-              showTimeSelect
-              dateFormat="MMMM d, yyyy h:mm aa"
-            />
-            
-            <button onClick={handleSaveReminder}>Save Reminder</button>
-            <button onClick={closeModal}>Cancel</button>
-
-          </div>
-        </Modal>
+    <label htmlFor="reminder-message">Message:</label>
+    <textarea
+      id="reminder-message"
+      value={reminderMessage}
+      onChange={(e) => setReminderMessage(e.target.value)}
+    ></textarea>
+    <label htmlFor="reminder-time">Reminder Time:</label>
+    <DatePicker
+      selected={reminderTime}
+      onChange={handleReminderTimeChange}
+      showTimeSelect
+      dateFormat="MMMM d, yyyy h:mm aa"
+    />
+    <label htmlFor="reminder-due-date">Due Date:</label>
+          <DatePicker
+            id="reminder-due-date"
+            selected={dueDate}
+            onChange={handleDueDateChange}
+            dateFormat="MMMM d, yyyy"
+          />
+    <button onClick={handleSaveReminder}>
+      {selectedTask ? 'Save Reminder' : 'Create Reminder'}
+    </button>
+    <button onClick={closeModal}>Cancel</button>
+  </div>
+</Modal>
 
        
 

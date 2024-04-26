@@ -9,7 +9,9 @@
   min-height: 100vh;
   overflow: hidden; /* Add this line to prevent white space */
   position: relative;
+  margin-top: 58px;
   bottom: 0%;
+  margin-bottom: 0%;
 }
 
 .create-task-container {
